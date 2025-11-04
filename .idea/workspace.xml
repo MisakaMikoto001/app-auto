@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/caps.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/env.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件- 新增 src/base_page.py 基础页面类&#10;- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能">
+      <change afterPath="$PROJECT_DIR$/config/devices.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +20,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -64,6 +65,19 @@
       <option name="presentableId" value="Default" />
       <updated>1762239113915</updated>
     </task>
+    <task id="LOCAL-00001" summary="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件- 新增 src/base_page.py 基础页面类&#10;- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能">
+      <option name="closed" value="true" />
+      <created>1762245471286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762245471286</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件- 新增 src/base_page.py 基础页面类&#10;- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件- 新增 src/base_page.py 基础页面类&#10;- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能" />
   </component>
 </project>
