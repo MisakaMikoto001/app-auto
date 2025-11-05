@@ -4,21 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py">
-      <change afterPath="$PROJECT_DIR$/src/pages/My_set.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_confirm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_generated_successfully.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_generating.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_Personal_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_about_us.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_confirm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_notice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_feedback.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Set_tel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Wallet_withdrawal_details.py" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件- 新增 Pop_up_baby_information.py 页面文件&#10;- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本&#10;- 新增 YAML 文件读取工具类 yaml_reader.py&#10;- 添加 My_set.py 页面文件&#10;- 添加 Pop_up_confirm.py 页面文件- 添加 Pop_up_generated_successfully.py 页面文件&#10;- 添加 Pop_up_generating.py 页面文件&#10;- 添加 Pop_up_more.py 页面文件- 添加 Set_Personal_data.py 页面文件&#10;- 添加 Set_about_us.py 页面文件&#10;- 添加 Set_cancellation_confirm.py 页面文件- 添加 Set_cancellation_notice.py 页面文件- 添加 Set_feedback.py 页面文件- 添加 Set_tel.py 页面文件- 添加 Wallet_withdrawal_details.py 页面文件&#10;- 更新 My_setting.py 为 Agreement_details.py">
+      <change afterPath="$PROJECT_DIR$/src/pages/My_print_order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/My_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Agreement_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Agreement_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Agreement_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Creat_custom_creations.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Creat_custom_creations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Creat_inspired_creation_first.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Creat_inspired_creation_first.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_member_top_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/My_member_top_up.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_print.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Creat_inspired_creation_second.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/My_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_tamber.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/My_tamber.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_wallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/My_wallet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/New_sound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/New_sound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Play_editpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Play_editpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Playpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Playpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Points_breakdown.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Points_breakdown.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Points_top_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Points_top_up.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_baby_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_baby_information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_confirm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_confirm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_dubbing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_dubbing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_generated_successfully.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_generated_successfully.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_generating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_more.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_payment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Print_publicity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Print_publicity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Print_the_address.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Print_the_address.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Print_the_order_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Print_the_order_details.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_Personal_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_Personal_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_about_us.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_about_us.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_cancellation_confirm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_confirm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_cancellation_notice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_notice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_feedback.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_feedback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Set_tel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Set_tel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_ablility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_ablility.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_invite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_invite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_mine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_mine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Wallet_withdrawal_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Wallet_withdrawal_details.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762321469774</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件- 新增 Pop_up_baby_information.py 页面文件&#10;- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本&#10;- 新增 YAML 文件读取工具类 yaml_reader.py&#10;- 添加 My_set.py 页面文件&#10;- 添加 Pop_up_confirm.py 页面文件- 添加 Pop_up_generated_successfully.py 页面文件&#10;- 添加 Pop_up_generating.py 页面文件&#10;- 添加 Pop_up_more.py 页面文件- 添加 Set_Personal_data.py 页面文件&#10;- 添加 Set_about_us.py 页面文件&#10;- 添加 Set_cancellation_confirm.py 页面文件- 添加 Set_cancellation_notice.py 页面文件- 添加 Set_feedback.py 页面文件- 添加 Set_tel.py 页面文件- 添加 Wallet_withdrawal_details.py 页面文件&#10;- 更新 My_setting.py 为 Agreement_details.py">
+      <option name="closed" value="true" />
+      <created>1762322967731</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762322967731</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -147,6 +180,7 @@
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py&#10;- 添加 WDA 构建脚本 scripts/wda_build.sh- 更新 workspace.xml 记录新增文件变更和配置调整" />
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py- 添加 WDA 构建脚本 scripts/wda_build.sh&#10;- 更新 workspace.xml 记录新增文件变更和配置调整&#10;- 新增 YAML 文件读取工具类 src/common/yaml_reader.py&#10;- 添加多个页面对象文件，包括 Creat_inspired_creation_first.py 等" />
     <MESSAGE value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py" />
+    <MESSAGE value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件- 新增 Pop_up_baby_information.py 页面文件&#10;- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本&#10;- 新增 YAML 文件读取工具类 yaml_reader.py&#10;- 添加 My_set.py 页面文件&#10;- 添加 Pop_up_confirm.py 页面文件- 添加 Pop_up_generated_successfully.py 页面文件&#10;- 添加 Pop_up_generating.py 页面文件&#10;- 添加 Pop_up_more.py 页面文件- 添加 Set_Personal_data.py 页面文件&#10;- 添加 Set_about_us.py 页面文件&#10;- 添加 Set_cancellation_confirm.py 页面文件- 添加 Set_cancellation_notice.py 页面文件- 添加 Set_feedback.py 页面文件- 添加 Set_tel.py 页面文件- 添加 Wallet_withdrawal_details.py 页面文件&#10;- 更新 My_setting.py 为 Agreement_details.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件- 新增 Pop_up_baby_information.py 页面文件&#10;- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本&#10;- 新增 YAML 文件读取工具类 yaml_reader.py&#10;- 添加 My_set.py 页面文件&#10;- 添加 Pop_up_confirm.py 页面文件- 添加 Pop_up_generated_successfully.py 页面文件&#10;- 添加 Pop_up_generating.py 页面文件&#10;- 添加 Pop_up_more.py 页面文件- 添加 Set_Personal_data.py 页面文件&#10;- 添加 Set_about_us.py 页面文件&#10;- 添加 Set_cancellation_confirm.py 页面文件- 添加 Set_cancellation_notice.py 页面文件- 添加 Set_feedback.py 页面文件- 添加 Set_tel.py 页面文件- 添加 Wallet_withdrawal_details.py 页面文件&#10;- 更新 My_setting.py 为 Agreement_details.py" />
   </component>
 </project>
