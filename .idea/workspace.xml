@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py- 添加 WDA 构建脚本 scripts/wda_build.sh&#10;- 更新 workspace.xml 记录新增文件变更和配置调整&#10;- 新增 YAML 文件读取工具类 src/common/yaml_reader.py&#10;- 添加多个页面对象文件，包括 Creat_inspired_creation_first.py 等">
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_baby_information.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_dubbing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_payment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Print_publicity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Print_the_address.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Print_the_order_details.py" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py">
+      <change afterPath="$PROJECT_DIR$/src/pages/My_set.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_confirm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_generated_successfully.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_generating.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Pop_up_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_Personal_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_about_us.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_confirm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_cancellation_notice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_feedback.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Set_tel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Wallet_withdrawal_details.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/My_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/My_print.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/My_setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Agreement_details.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762314956932</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py">
+      <option name="closed" value="true" />
+      <created>1762321469774</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762321469774</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,6 +146,7 @@
     <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式" />
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py&#10;- 添加 WDA 构建脚本 scripts/wda_build.sh- 更新 workspace.xml 记录新增文件变更和配置调整" />
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py- 添加 WDA 构建脚本 scripts/wda_build.sh&#10;- 更新 workspace.xml 记录新增文件变更和配置调整&#10;- 新增 YAML 文件读取工具类 src/common/yaml_reader.py&#10;- 添加多个页面对象文件，包括 Creat_inspired_creation_first.py 等" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py- 添加 WDA 构建脚本 scripts/wda_build.sh&#10;- 更新 workspace.xml 记录新增文件变更和配置调整&#10;- 新增 YAML 文件读取工具类 src/common/yaml_reader.py&#10;- 添加多个页面对象文件，包括 Creat_inspired_creation_first.py 等" />
+    <MESSAGE value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py" />
   </component>
 </project>
