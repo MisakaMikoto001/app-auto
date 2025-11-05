@@ -9,9 +9,10 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class StartPage(BasePage):
     # 页面元素定位器
-    START_BUTTON = (AppiumBy.ID, "start_button_id")
-    SKIP_BUTTON = (AppiumBy.ID, "skip_button_id")
-    LOGO_IMAGE = (AppiumBy.ID, "logo_image_id")
+    TITLE = (AppiumBy.ID, "tv_title")
+    DESCRIPTION = (AppiumBy.ID, "tv_content")
+    AGREE_BUTTON = (AppiumBy.ID, "start_button_id")
+    REJECT_BUTTON = (AppiumBy.ID, "skip_button_id")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -31,3 +32,4 @@ class StartPage(BasePage):
     def wait_for_start_page(self, timeout=10):
         """等待启动页加载完成"""
         return self.wait_for_element_visible(self.START_BUTTON, timeout)
+
