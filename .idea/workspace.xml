@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main- 启用项目配置文件共享功能- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags- 添加 README.md说明项目结构与运行方式">
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式">
+      <change afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/run_parallel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/wda_build.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/caps.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/caps.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/devices.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/devices.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/env.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/env.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,18 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\PyCharm2025.1\\plugins\\Shell Script\\shellcheck.exe",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -94,13 +96,22 @@
       <option name="project" value="LOCAL" />
       <updated>1762246618249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式">
+      <option name="closed" value="true" />
+      <created>1762310933157</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762310933157</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件- 新增 src/base_page.py 基础页面类&#10;- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能" />
     <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能- 添加 config/devices.yaml 设备配置文件- 配置 Git 推送标签模式为 --tags" />
     <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main- 启用项目配置文件共享功能- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags- 添加 README.md说明项目结构与运行方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件- 更新 workspace.xml 支持 Python 脚本模板&#10;- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main- 启用项目配置文件共享功能- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags- 添加 README.md说明项目结构与运行方式" />
+    <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式" />
   </component>
 </project>
