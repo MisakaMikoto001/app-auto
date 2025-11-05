@@ -19,17 +19,32 @@ class YamlReader:
         self.yaml_path = yaml_path
         self._data = None
 
-    def read(self):
+    def read(self, file_path=None):
         """
         读取 YAML 文件内容
+
+        Args:
+            file_path (str, optional): YAML 文件路径，如果不提供则使用初始化时的路径
 
         Returns:
             dict: YAML 文件解析后的数据
         """
-        if self._data is None:
-            with open(self.yaml_path, 'r', encoding='utf-8') as f:
-                self._data = yaml.safe_load(f)
-        return self._data
+        # 确定要读取的文件路径
+        path = file_path if file_path is not None else self.yaml_path
+
+        # 如果是初始化路径且已有缓存数据，则直接返回缓存
+        if file_path is None and self._data is not None:
+            return self._data
+
+        # 读取并解析 YAML 文件
+        with open(path, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+
+        # 如果是初始化路径，缓存数据
+        if file_path is None:
+            self._data = data
+
+        return data
 
     def get(self, key, default=None):
         """

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(pages): 添加多个页面对象类以支持新功能- 添加协议详情页面对象类 AgreementDetailsPage- 添加创建自定义创作页面对象类 CreatCustomCreationsPage&#10;- 添加会员充值页面对象类 MyMemberTopUpPage- 添加打印订单页面对象类 MyPrintOrderPage&#10;- 添加我的模板页面对象类 MyTamberPage&#10;- 添加我的钱包页面对象类 MyWalletPage- 添加新建音频页面对象类 NewSoundPage- 添加播放编辑页面对象类 PlayEditPage- 添加播放页面对象类 PlayPage&#10;- 添加积分明细页面对象类 PointsBreakdownPage- 添加弹窗宝宝信息页面对象类 PopUpBabyInformationPage&#10;- 添加弹窗确认页面对象类 PopUpConfirmPage- 添加弹窗配音页面对象类 PopUpDubbingPage&#10;- 添加弹窗生成成功页面对象类 PopUpGeneratedSuccessfullyPage&#10;- 添加弹窗生成中页面对象类 PopUpGeneratingPage&#10;- 添加弹窗登录页面对象类 PopUpLoginPage&#10;- 添加弹窗更多页面对象类 PopUpMorePage- 添加弹窗支付页面对象类 PopUpPaymentPage- 添加打印宣传页面对象类 PrintPublicityPage&#10;- 添加打印地址页面对象类 PrintTheAddressPage&#10;- 添加打印订单详情页面对象类 PrintTheOrderDetailsPage&#10;- 添加关于我们设置页面对象类 SetAboutUsPage">
+      <change beforePath="$PROJECT_DIR$/.idea/APP_Auto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/APP_Auto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/devices.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/devices.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/yaml_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/yaml_reader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +34,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MisakaMikoto001&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:MisakaMikoto001/app-auto.git&quot;,
+    &quot;accountId&quot;: &quot;a1f529cf-748c-496a-a2b0-4afbecb2f649&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -46,17 +63,19 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\PyCharm2025.1\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/APP_Auto/app-auto&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
       </set>
     </attachedChunks>
   </component>
