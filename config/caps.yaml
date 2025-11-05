@@ -1,0 +1,13 @@
+# 公共 desired_caps 配置示例
+platformName: Android  # 或 iOS
+platformVersion: "10"  # 平台版本号
+deviceName: "emulator-5554"  # 设备名称
+appPackage: "com.example.app"  # 应用包名 (Android)
+appActivity: ".MainActivity"  # 启动 Activity (Android)
+bundleId: "com.example.app"  # Bundle ID (iOS)
+automationName: "UiAutomator2"  # 自动化引擎
+noReset: false  # 是否重置应用状态
+fullReset: false  # 是否完全重置应用
+unicodeKeyboard: true  # 启用 Unicode 输入法
+resetKeyboard: true  # 重置输入法
+newCommandTimeout: 600  # 新命令超时时间(秒)
