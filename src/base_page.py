@@ -14,7 +14,13 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
-        self.yaml_reader = YamlReader()  # 初始化 YamlReader 实例
+        self.yaml_reader = None  # 延迟初始化
+
+    def get_yaml_reader(self, yaml_path):
+        """获取 YamlReader 实例"""
+        if self.yaml_reader is None:
+            self.yaml_reader = YamlReader(yaml_path)
+        return self.yaml_reader
 
     def read_config(self, file_path):
         """读取 YAML 配置文件"""
@@ -143,6 +149,47 @@ class BasePage:
     def take_screenshot(self, filename):
         """截图"""
         self.driver.save_screenshot(filename)
+
+    def close_app(self):
+        """关闭应用程序"""
+        try:
+            self.driver.terminate_app(self.driver.capabilities.get('appPackage'))
+            return True
+        except Exception as e:
+            print(f"关闭应用程序失败: {e}")
+            return False
+
+    def launch_app(self):
+        """启动应用程序"""
+        try:
+            package_name = self.driver.capabilities.get('appPackage')
+            if not package_name:
+                raise ValueError("无法获取应用包名")
+
+            # 激活应用
+            self.driver.activate_app(package_name)
+            return True
+        except Exception as e:
+            print(f"启动应用程序失败: {e}")
+            return False
+
+    def clear_app_cache(self):
+        """清除应用程序缓存"""
+        try:
+            # 获取当前应用的包名
+            package_name = self.driver.capabilities.get('appPackage')
+            if not package_name:
+                raise ValueError("无法获取应用包名")
+
+            # 使用 adb 命令清除应用缓存
+            self.driver.execute_script('mobile: shell', {
+                'command': 'pm',
+                'args': ['clear', package_name]
+            })
+            return True
+        except Exception as e:
+            print(f"清除应用缓存失败: {e}")
+            return False
 
     def is_app_closed(self, timeout=10, message="Application is still running"):
         """

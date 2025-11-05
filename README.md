@@ -37,3 +37,6 @@ app-auto/                       # 项目根
 ├─ requirements.txt
 └─ README.md                    # 写清“如何跑起来”
 '''
+
+appium 权限问题
+appium --allow-insecure=*:adb_shell

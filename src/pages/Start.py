@@ -20,6 +20,14 @@ class StartPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def wait_for_start_page(self, timeout=30):  # 增加超时时间
+        """等待启动页加载完成"""
+        return self.wait_for_element_visible(self.AGREE_BUTTON, timeout)
+
+    def is_agree_button_displayed(self):
+        """检查同意按钮是否显示"""
+        return self.wait_for_element_visible(self.AGREE_BUTTON)
+
     def click_agree(self):
         """点击同意进入APP"""
         self.click_element(self.AGREE_BUTTON)
@@ -56,20 +64,3 @@ class StartPage(BasePage):
         """等待启动页加载完成"""
         return self.wait_for_element_visible(self.AGREE_BUTTON, timeout)
 
-
-def test_exit_the_app(driver):
-    """退出应用程序
-
-    Args:
-        driver: Appium WebDriver 实例
-    """
-    start_page = StartPage(driver)
-    # 点击不同意按钮
-    start_page.click_reject()
-
-    if start_page.is_app_closed():
-        if start_page.is_app_running():
-            print("应用程序未关闭")
-        print("应用程序已关闭")
-    else:
-        print("应用程序未关闭")

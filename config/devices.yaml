@@ -1,10 +1,20 @@
 # 多设备并行测试配置
-devices:
-  - deviceName: "emulator-5554"
-    platformName: "Android"
-    platformVersion: "10"
-    udid: "emulator-5554"
-    systemPort: "8200"
+pixel_5:
+  platformName: "Android"
+  deviceName: "emulator-5554"
+  udid: "emulator-5554"
+  appPackage: "com.curiousmax.kidstales"
+  appActivity: "feature.splash.SplashActivity"
+  automationName: "UiAutomator2"
+  unicodeKeyboard: true
+  resetKeyboard: true
+  noReset: true
+  autoGrantPermissions: true
+  newCommandTimeout: 300
+  skipServerInstallation: false
+  settings[enableNotificationListener]: true
+  settings[waitForIdleTimeout]: 0
+
 
 #  - deviceName: "emulator-5556"
 #    platformName: "Android"
