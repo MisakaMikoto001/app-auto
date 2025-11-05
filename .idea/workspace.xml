@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML 读取逻辑，支持动态路径和缓存控制- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12">
-      <change afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_cases/test_start_page.py" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/devices.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/devices.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,24 +52,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python 测试.Python 测试 (Start.py 内).executor": "Run",
-    "Python 测试.Python 测试 (test_start_page.py 内).executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/project/APP_Auto/app-auto",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python 测试.Python 测试 (Start.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python 测试 (test_start_page.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/APP_Auto/app-auto&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -188,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762351919227</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12">
+      <option name="closed" value="true" />
+      <created>1762357420397</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1762357420397</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -204,6 +205,7 @@
     <MESSAGE value="feat(pages): 添加多个页面对象类以支持新功能- 添加协议详情页面对象类 AgreementDetailsPage- 添加创建自定义创作页面对象类 CreatCustomCreationsPage&#10;- 添加会员充值页面对象类 MyMemberTopUpPage- 添加打印订单页面对象类 MyPrintOrderPage&#10;- 添加我的模板页面对象类 MyTamberPage&#10;- 添加我的钱包页面对象类 MyWalletPage- 添加新建音频页面对象类 NewSoundPage- 添加播放编辑页面对象类 PlayEditPage- 添加播放页面对象类 PlayPage&#10;- 添加积分明细页面对象类 PointsBreakdownPage- 添加弹窗宝宝信息页面对象类 PopUpBabyInformationPage&#10;- 添加弹窗确认页面对象类 PopUpConfirmPage- 添加弹窗配音页面对象类 PopUpDubbingPage&#10;- 添加弹窗生成成功页面对象类 PopUpGeneratedSuccessfullyPage&#10;- 添加弹窗生成中页面对象类 PopUpGeneratingPage&#10;- 添加弹窗登录页面对象类 PopUpLoginPage&#10;- 添加弹窗更多页面对象类 PopUpMorePage- 添加弹窗支付页面对象类 PopUpPaymentPage- 添加打印宣传页面对象类 PrintPublicityPage&#10;- 添加打印地址页面对象类 PrintTheAddressPage&#10;- 添加打印订单详情页面对象类 PrintTheOrderDetailsPage&#10;- 添加关于我们设置页面对象类 SetAboutUsPage" />
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;-重构 YAML 读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例- 升级项目 Python SDK 版本至 3.12" />
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML 读取逻辑，支持动态路径和缓存控制- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML 读取逻辑，支持动态路径和缓存控制- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
+    <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
   </component>
 </project>
