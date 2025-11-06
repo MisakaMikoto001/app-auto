@@ -3,10 +3,11 @@ import subprocess
 import shutil
 import argparse
 import sys
-import signal
-import time
+from datetime import datetime
+
 print(f"Python 路径: {sys.executable}")
 print(f"PATH 环境变量: {os.environ.get('PATH')}")
+
 
 
 
@@ -24,12 +25,12 @@ def main():
 
     # 构建正确的路径
     reports_dir = os.path.join(project_root, "outputs", "reports")
-    allure_report_dir = os.path.join(project_root, "outputs", "allure-report")
-    test_cases_dir = os.path.join(project_root, "test_cases")
 
-    # 清理旧报告
-    shutil.rmtree(reports_dir, ignore_errors=True)
-    os.makedirs(reports_dir, exist_ok=True)
+    # 创建带时间戳的报告文件夹
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    allure_report_dir = os.path.join(project_root, "outputs", "allure-report", f"test_{timestamp}")
+
+    test_cases_dir = os.path.join(project_root, "test_cases")
 
     print("当前工作目录:", os.getcwd())
     print("test_cases 目录内容:")
@@ -52,15 +53,21 @@ def main():
 
     # 生成静态HTML报告
     try:
-        subprocess.run([
+        result = subprocess.run([
             "allure", "generate",
             reports_dir,
             "-o", allure_report_dir,
             "--clean"
-        ], check=True, shell=True)  # 添加 shell=True 参数
+        ], check=True, shell=True)
+
         print(f"静态HTML报告已生成至 {allure_report_dir}")
+        # 添加短暂延迟确保文件完全写入
+        import time
+        time.sleep(1)
     except FileNotFoundError:
         print("提示: 未安装 allure 命令行工具，跳过静态报告生成")
+    except subprocess.CalledProcessError as e:
+        print(f"报告生成失败: {e}")
 
     # 打开网页版测试报告
     try:
@@ -69,12 +76,6 @@ def main():
     except FileNotFoundError:
         print("提示: 未安装 allure 命令行工具，无法自动打开报告")
         print(f"你可以手动打开 {allure_report_dir}/index.html 查看报告")
-
-    def signal_handler(sig, frame):
-        print("\n正在停止服务器...")
-        sys.exit(0)
-
-    signal.signal(signal.SIGINT, signal_handler)
 
 if __name__ == "__main__":
     main()
