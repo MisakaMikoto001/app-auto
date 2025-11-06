@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(login): 实现弹窗登录功能并添加相关测试用例&#10;&#10;- 新增登录业务流程类处理完整登录逻辑&#10;- 扩展基础页面类增加元素可见性判断和吐司断言方法&#10;- 更新弹窗登录页面元素定位和交互方法&#10;- 添加 Pixel 6 设备配置信息- 创建弹窗登录测试用例覆盖多种登录场景&#10;- 实现微信登录和退出登录功能- 优化页面元素检查和弹窗状态判断逻辑">
+      <change afterPath="$PROJECT_DIR$/scripts/generate_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/APP_Auto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/APP_Auto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_ablility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_ablility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_invite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_invite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_mine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_mine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

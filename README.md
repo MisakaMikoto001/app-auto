@@ -40,3 +40,6 @@ app-auto/                       # 项目根
 
 appium 权限问题
 appium --allow-insecure=*:adb_shell
+
+安装
+npm install -g allure-commandline
