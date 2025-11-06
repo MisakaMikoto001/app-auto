@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12">
-      <change beforePath="$PROJECT_DIR$/.idea/APP_Auto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/APP_Auto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page): 增加坐标点击功能并优化截图保存路径- 新增 tap_coordinates 方法支持指定坐标点击- 截图功能自动创建 outputs/screenshots 目录&#10;-优化 YAML 文件路径解析逻辑&#10;- 更新测试用例中的元素交互方式&#10;- 升级项目 Python SDK 版本至 3.13">
+      <change afterPath="$PROJECT_DIR$/src/business/First_use.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/Login_pop_up_verification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_cases/test_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reject_button_not_found.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/devices.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/devices.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/yaml_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/yaml_reader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/test_start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_start_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -196,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762357420397</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat(base_page): 增加坐标点击功能并优化截图保存路径- 新增 tap_coordinates 方法支持指定坐标点击- 截图功能自动创建 outputs/screenshots 目录&#10;-优化 YAML 文件路径解析逻辑&#10;- 更新测试用例中的元素交互方式&#10;- 升级项目 Python SDK 版本至 3.13">
+      <option name="closed" value="true" />
+      <created>1762394559332</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1762394559332</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -213,6 +222,7 @@
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;-重构 YAML 读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例- 升级项目 Python SDK 版本至 3.12" />
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML 读取逻辑，支持动态路径和缓存控制- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
+    <MESSAGE value="feat(base_page): 增加坐标点击功能并优化截图保存路径- 新增 tap_coordinates 方法支持指定坐标点击- 截图功能自动创建 outputs/screenshots 目录&#10;-优化 YAML 文件路径解析逻辑&#10;- 更新测试用例中的元素交互方式&#10;- 升级项目 Python SDK 版本至 3.13" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page): 增加坐标点击功能并优化截图保存路径- 新增 tap_coordinates 方法支持指定坐标点击- 截图功能自动创建 outputs/screenshots 目录&#10;-优化 YAML 文件路径解析逻辑&#10;- 更新测试用例中的元素交互方式&#10;- 升级项目 Python SDK 版本至 3.13" />
   </component>
 </project>

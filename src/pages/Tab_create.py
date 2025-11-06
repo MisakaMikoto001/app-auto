@@ -30,10 +30,6 @@ class TabCreatePage(BasePage):
         """点击取消按钮"""
         self.click_element(self.CANCEL_BUTTON)
 
-    def go_back(self):
-        """返回上一页"""
-        self.click_element(self.BACK_BUTTON)
-
     def create_item(self, content):
         """创建项目完整流程"""
         self.input_create_content(content)

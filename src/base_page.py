@@ -97,6 +97,14 @@ class BasePage:
         for _ in range(times):
             self.driver.back()
 
+    def is_element_displayed(self, locator, timeout=10):
+        """判断元素是否可见"""
+        try:
+            element = self.wait_for_element_visible(locator, timeout)
+            return element.is_displayed()
+        except:
+            return False
+
     def wait_for_element_visible(self, locator, timeout=10):
         """等待元素可见"""
         try:
@@ -157,6 +165,52 @@ class BasePage:
 
         if missing_texts:
             raise AssertionError(f"{message}. Missing texts: {missing_texts}. Actual text: '{element_text}'")
+
+    def assert_toast_visible(self, expected_text, timeout=10, message=None):
+        """
+        断言吐司消息可见并包含预期文本
+
+        Args:
+            expected_text (str): 期望的吐司文本
+            timeout (int): 等待超时时间，默认为10秒
+            message (str): 断言失败时的错误信息
+        """
+        if message is None:
+            message = f"吐司消息未显示或不包含文本: '{expected_text}'"
+
+        try:
+            # 等待吐司元素出现
+            toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
+            element = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(toast_locator)
+            )
+            # 验证元素文本包含预期内容
+            actual_text = element.text
+            if expected_text not in actual_text:
+                raise AssertionError(f"{message}. 实际文本: '{actual_text}'")
+            return True
+        except TimeoutException:
+            raise AssertionError(message)
+
+    def is_toast_displayed(self, expected_text, timeout=5):
+        """
+        检查吐司消息是否显示
+
+        Args:
+            expected_text (str): 期望的吐司文本
+            timeout (int): 等待超时时间，默认为5秒
+
+        Returns:
+            bool: 吐司显示且包含预期文本返回True，否则返回False
+        """
+        try:
+            toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
+            WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(toast_locator)
+            )
+            return True
+        except TimeoutException:
+            return False
 
     def take_screenshot(self, filename):
         """截图并保存到指定路径"""
