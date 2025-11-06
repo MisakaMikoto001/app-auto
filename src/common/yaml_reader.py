@@ -71,5 +71,11 @@ class YamlReader:
         Returns:
             dict: 解析后的 YAML 数据
         """
+
+        # 如果是相对路径，则基于项目根目录
+        if not os.path.isabs(yaml_path):
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+            yaml_path = os.path.join(project_root, yaml_path)
+
         with open(yaml_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)

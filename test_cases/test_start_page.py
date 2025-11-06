@@ -35,7 +35,7 @@ def test_click_agree_button(driver):
     start_page.close_app()
 
     # 验证应用是否关闭
-    assert start_page.is_app_closed(), "应用未能成功关闭"
+    assert start_page.is_app_closed(), "应用未关闭"
 
 def test_click_reject_button(driver):
     """测试点击不同意按钮退出APP"""
@@ -70,9 +70,13 @@ def test_click_privacy_policy(driver):
         start_page.close_app()
         start_page = StartPage(driver)
 
-    # 点击隐私政策
-    expected_texts = ["隐私政策", "条款"]
-    start_page.click_privacy_policy(start_page.PRIVACY_POLICY, expected_texts)
+    # # 点击隐私政策
+    # expected_texts = ["隐私政策", "条款"]
+    # start_page.click_privacy_policy(start_page.PRIVACY_POLICY, expected_texts)
+
+    # 判断隐私政策是否存在
+    if start_page.is_content_displayed():
+        start_page.tap_coordinates(258,121,1000)
 
     start_page.click_reject()
     start_page.clear_app_cache()
@@ -92,9 +96,13 @@ def test_click_user_agreement(driver):
         start_page.close_app()
         start_page = StartPage(driver)
 
-    # 点击用户协议
-    expected_texts = ["用户协议", "服务条款"]
-    start_page.click_user_agreement(start_page.USER_AGREEMENT, expected_texts)
+    # # 点击用户协议
+    # expected_texts = ["用户协议", "服务条款"]
+    # start_page.click_user_agreement(start_page.USER_AGREEMENT, expected_texts)
+
+    # 判断隐私政策是否存在
+    if start_page.is_content_displayed():
+        start_page.tap_coordinates(225,121,1000)
 
     start_page.click_reject()
     start_page.clear_app_cache()

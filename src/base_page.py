@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
+import os
 
 
 class BasePage:
@@ -76,6 +77,17 @@ class BasePage:
         start_y = size['height'] * 0.2
         end_y = size['height'] * 0.8
         self.driver.swipe(x, start_y, x, end_y, duration)
+
+    def tap_coordinates(self, x, y, duration=None):
+        """
+        点击屏幕上的指定坐标
+
+        Args:
+            x (int): X坐标
+            y (int): Y坐标
+            duration (int, optional): 点按持续时间(毫秒)，默认为None(瞬时点击)
+        """
+        self.driver.tap([(x, y)], duration)
 
     def go_back(self, times=1):
         """返回上一步/多步
@@ -147,8 +159,16 @@ class BasePage:
             raise AssertionError(f"{message}. Missing texts: {missing_texts}. Actual text: '{element_text}'")
 
     def take_screenshot(self, filename):
-        """截图"""
-        self.driver.save_screenshot(filename)
+        """截图并保存到指定路径"""
+        # 创建截图保存目录
+        screenshot_dir = os.path.join("outputs", "screenshots")
+        os.makedirs(screenshot_dir, exist_ok=True)
+
+        # 完整的文件路径
+        filepath = os.path.join(screenshot_dir, filename)
+
+        # 截图并保存
+        self.driver.save_screenshot(filepath)
 
     def close_app(self):
         """关闭应用程序"""
