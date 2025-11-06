@@ -9,32 +9,67 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class TabCreatePage(BasePage):
     # 页面元素定位器
-    CREATE_TITLE = (AppiumBy.ID, "create_title_id")
-    CREATE_INPUT = (AppiumBy.ID, "create_input_id")
-    CONFIRM_BUTTON = (AppiumBy.ID, "confirm_button_id")
-    CANCEL_BUTTON = (AppiumBy.ID, "cancel_button_id")
-    BACK_BUTTON = (AppiumBy.ID, "back_button_id")
+    CREATE_TITLE = (AppiumBy.XPATH, "//*[@text='创作绘本']")
+    BANNER_JUMP = (AppiumBy.ID, "banner_view_pager")
+    CREATIVE_PICTURE_BOOK_COVER = (AppiumBy.ID, "iv_cover")
+    CREATIVE_PICTURE_BOOK_TITLES = (AppiumBy.ID, "tv_title")
+    CREATIVE_PICTURE_BOOK_DESCRIBE = (AppiumBy.ID, "tv_describe")
+    GO_CREATE_BUTTON = (AppiumBy.ID, "button_to_make")
+    ONE_CLICK_CREATION = (AppiumBy.ID, "mfl_create")
+    TAB_INDEX = (AppiumBy.ID, "tab_index")
+    TAB_CREATE = (AppiumBy.ID, "tab_create")
+    TAB_ABILITY = (AppiumBy.ID, "tab_ability")
+    TAB_INVITATION = (AppiumBy.ID, "tab_invitation")
+    TAB_MINE = (AppiumBy.ID, "tab_mine")
+    
 
     def __init__(self, driver):
         super().__init__(driver)
 
-    def input_create_content(self, content):
-        """输入创建内容"""
-        self.input_text(self.CREATE_INPUT, content)
+    def get_create_title(self):
+        """获取创作绘本标题"""
+        return self.find_element(*self.CREATE_TITLE)
 
-    def click_confirm(self):
-        """点击确认按钮"""
-        self.click_element(self.CONFIRM_BUTTON)
+    def click_banner_jump(self):
+        """点击横幅跳转"""
+        self.click_element(*self.BANNER_JUMP)
 
-    def click_cancel(self):
-        """点击取消按钮"""
-        self.click_element(self.CANCEL_BUTTON)
+    def click_creative_picture_book(self):
+        """点击创作绘本封面"""
+        self.click_element(*self.CREATIVE_PICTURE_BOOK_COVER)
 
-    def create_item(self, content):
-        """创建项目完整流程"""
-        self.input_create_content(content)
-        self.click_confirm()
+    def get_picture_book_title(self):
+        """获取绘本标题"""
+        return self.find_element(*self.CREATIVE_PICTURE_BOOK_TITLES)
 
-    def is_create_page_displayed(self):
-        """检查创建页面是否显示"""
-        return self.wait_for_element_visible(self.CREATE_TITLE)
+    def get_picture_book_describe(self):
+        """获取绘本描述"""
+        return self.find_element(*self.CREATIVE_PICTURE_BOOK_DESCRIBE)
+
+    def click_go_create_button(self):
+        """点击去创作按钮"""
+        self.click_element(*self.GO_CREATE_BUTTON)
+
+    def click_one_click_creation(self):
+        """点击一键创作"""
+        self.click_element(*self.ONE_CLICK_CREATION)
+
+    def click_tab_index(self):
+        """点击首页标签"""
+        self.click_element(*self.TAB_INDEX)
+
+    def click_tab_create(self):
+        """点击创作标签"""
+        self.click_element(*self.TAB_CREATE)
+
+    def click_tab_ability(self):
+        """点击能力标签"""
+        self.click_element(*self.TAB_ABILITY)
+
+    def click_tab_invitation(self):
+        """点击邀请标签"""
+        self.click_element(*self.TAB_INVITATION)
+
+    def click_tab_mine(self):
+        """点击我的标签"""
+        self.click_element(*self.TAB_MINE)

@@ -14,6 +14,11 @@ class TabMinePage(BasePage):
     USER_NAME = (AppiumBy.ID, "user_name_id")
     SETTINGS_BUTTON = (AppiumBy.ID, "settings_button_id")
     BACK_BUTTON = (AppiumBy.ID, "back_button_id")
+    TAB_INDEX = (AppiumBy.ID, "tab_index")
+    TAB_CREATE = (AppiumBy.ID, "tab_create")
+    TAB_ABILITY = (AppiumBy.ID, "tab_ability")
+    TAB_INVITATION = (AppiumBy.ID, "tab_invitation")
+    TAB_MINE = (AppiumBy.ID, "tab_mine")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -21,15 +26,3 @@ class TabMinePage(BasePage):
     def get_user_name(self):
         """获取用户名"""
         return self.get_text(self.USER_NAME)
-
-    def click_settings(self):
-        """点击设置按钮"""
-        self.click_element(self.SETTINGS_BUTTON)
-
-    def go_back(self):
-        """返回上一页"""
-        self.click_element(self.BACK_BUTTON)
-
-    def is_mine_page_displayed(self):
-        """检查我的页面是否显示"""
-        return self.wait_for_element_visible(self.MINE_TITLE)

@@ -14,35 +14,11 @@ class TabIndexPage(BasePage):
     BANNER_IMAGE = (AppiumBy.ID, "banner_image_id")
     MENU_LIST = (AppiumBy.ID, "menu_list_id")
     BACK_BUTTON = (AppiumBy.ID, "back_button_id")
+    TAB_INDEX = (AppiumBy.ID, "tab_index")
+    TAB_CREATE = (AppiumBy.ID, "tab_create")
+    TAB_ABILITY = (AppiumBy.ID, "tab_ability")
+    TAB_INVITATION = (AppiumBy.ID, "tab_invitation")
+    TAB_MINE = (AppiumBy.ID, "tab_mine")
 
     def __init__(self, driver):
         super().__init__(driver)
-
-    def get_index_title(self):
-        """获取首页标题"""
-        return self.get_text(self.INDEX_TITLE)
-
-    def input_search_keyword(self, keyword):
-        """输入搜索关键词"""
-        self.input_text(self.SEARCH_INPUT, keyword)
-
-    def click_search(self):
-        """点击搜索（通常在输入后按回车或点击搜索图标）"""
-        # 根据具体实现可能需要特殊处理
-        pass
-
-    def is_banner_displayed(self):
-        """检查横幅图片是否显示"""
-        return self.wait_for_element_visible(self.BANNER_IMAGE)
-
-    def get_menu_list(self):
-        """获取菜单列表"""
-        return self.find_elements(self.MENU_LIST)
-
-    def go_back(self):
-        """返回上一页"""
-        self.click_element(self.BACK_BUTTON)
-
-    def is_index_page_displayed(self):
-        """检查首页是否显示"""
-        return self.wait_for_element_visible(self.INDEX_TITLE)

@@ -14,6 +14,11 @@ class TabInvitePage(BasePage):
     COPY_BUTTON = (AppiumBy.ID, "copy_button_id")
     SHARE_BUTTON = (AppiumBy.ID, "share_button_id")
     BACK_BUTTON = (AppiumBy.ID, "back_button_id")
+    TAB_INDEX = (AppiumBy.ID, "tab_index")
+    TAB_CREATE = (AppiumBy.ID, "tab_create")
+    TAB_ABILITY = (AppiumBy.ID, "tab_ability")
+    TAB_INVITATION = (AppiumBy.ID, "tab_invitation")
+    TAB_MINE = (AppiumBy.ID, "tab_mine")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -22,22 +27,3 @@ class TabInvitePage(BasePage):
         """获取邀请页面标题"""
         return self.get_text(self.INVITE_TITLE)
 
-    def get_invite_code(self):
-        """获取邀请码"""
-        return self.get_text(self.INVITE_CODE)
-
-    def click_copy(self):
-        """点击复制按钮"""
-        self.click_element(self.COPY_BUTTON)
-
-    def click_share(self):
-        """点击分享按钮"""
-        self.click_element(self.SHARE_BUTTON)
-
-    def go_back(self):
-        """返回上一页"""
-        self.click_element(self.BACK_BUTTON)
-
-    def is_invite_page_displayed(self):
-        """检查邀请页面是否显示"""
-        return self.wait_for_element_visible(self.INVITE_TITLE)
