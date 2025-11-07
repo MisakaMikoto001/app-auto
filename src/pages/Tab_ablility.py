@@ -1,4 +1,3 @@
-# Tab_ablility.py
 """
 能力标签页面对象类
 """
@@ -20,4 +19,42 @@ class TabAbilityPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+
+    # 检查元素是否存在的方法
+    def is_element_exists(self, locator):
+        """检查元素是否存在"""
+        return self.is_element_present(locator)
+
+    # 点击操作方法
+    def click_carousel_chart(self):
+        """点击轮播图"""
+        self.click_element(self.CAROUSEL_CHART)
+
+    def click_ability_buy(self):
+        """点击购买按钮"""
+        self.click_element(self.ABILITY_BUY)
+
+    def click_ability_cover(self):
+        """点击封面"""
+        self.click_element(self.ABILITY_COVER)
+
+    def click_tab_index(self):
+        """点击首页标签"""
+        self.click_element(self.TAB_INDEX)
+
+    def click_tab_create(self):
+        """点击创作标签"""
+        self.click_element(self.TAB_CREATE)
+
+    def click_tab_ability(self):
+        """点击能力标签"""
+        self.click_element(self.TAB_ABILITY)
+
+    def click_tab_invitation(self):
+        """点击邀请标签"""
+        self.click_element(self.TAB_INVITATION)
+
+    def click_tab_mine(self):
+        """点击我的标签"""
+        self.click_element(self.TAB_MINE)
 

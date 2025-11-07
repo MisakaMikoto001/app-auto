@@ -32,12 +32,12 @@ def main():
 
     test_cases_dir = os.path.join(project_root, "test_cases")
 
-    print("当前工作目录:", os.getcwd())
-    print("test_cases 目录内容:")
-    if os.path.exists(test_cases_dir):
-        print(os.listdir(test_cases_dir))
-    else:
-        print("test_cases 目录不存在")
+    # print("当前工作目录:", os.getcwd())
+    # print("test_cases 目录内容:")
+    # if os.path.exists(test_cases_dir):
+    #     print(os.listdir(test_cases_dir))
+    # else:
+    #     print("test_cases 目录不存在")
 
     # 运行测试（即使测试失败也继续执行）
     test_result = subprocess.run([

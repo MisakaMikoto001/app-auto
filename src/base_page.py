@@ -32,6 +32,14 @@ class BasePage:
         config = self.read_config(file_path)
         return config.get(key)
 
+    def is_element_present(self, locator, timeout=10):
+        """检查元素是否存在"""
+        try:
+            self.find_element(locator, timeout)
+            return True
+        except TimeoutException:
+            return False
+
     def find_element(self, locator, timeout=10):
         """查找元素"""
         return WebDriverWait(self.driver, timeout).until(

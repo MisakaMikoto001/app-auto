@@ -9,11 +9,6 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class TabInvitePage(BasePage):
     # 页面元素定位器
-    INVITE_TITLE = (AppiumBy.ID, "invite_title_id")
-    INVITE_CODE = (AppiumBy.ID, "invite_code_id")
-    COPY_BUTTON = (AppiumBy.ID, "copy_button_id")
-    SHARE_BUTTON = (AppiumBy.ID, "share_button_id")
-    BACK_BUTTON = (AppiumBy.ID, "back_button_id")
     TAB_INDEX = (AppiumBy.ID, "tab_index")
     TAB_CREATE = (AppiumBy.ID, "tab_create")
     TAB_ABILITY = (AppiumBy.ID, "tab_ability")
@@ -23,7 +18,25 @@ class TabInvitePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def get_invite_title(self):
-        """获取邀请页面标题"""
-        return self.get_text(self.INVITE_TITLE)
+    def click_tab_index(self):
+        """点击首页标签"""
+        self.click_element(self.TAB_INDEX)
+
+    def click_tab_create(self):
+        """点击创作标签"""
+        self.click_element(self.TAB_CREATE)
+
+    def click_tab_ability(self):
+        """点击能力标签"""
+        self.click_element(self.TAB_ABILITY)
+
+    def click_tab_invitation(self):
+        """点击邀请标签"""
+        self.click_element(self.TAB_INVITATION)
+
+    def click_tab_mine(self):
+        """点击我的标签"""
+        self.click_element(self.TAB_MINE)
+
+
 
