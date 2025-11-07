@@ -9,6 +9,7 @@ import keyboard
 import threading
 
 print(f"Python 路径: {sys.executable}")
+print(f"Python 版本: {sys.version}")
 print(f"PATH 环境变量: {os.environ.get('PATH')}")
 
 # 全局变量存储进程引用
@@ -18,7 +19,7 @@ process_lock = threading.Lock()
 
 def signal_handler(sig, frame):
     """信号处理器，用于关闭Allure服务器"""
-    print("\n\n正在停止Allure服务器...")
+    print("\n正在停止Allure服务器...")
     global allure_process
 
     # 只有当 allure_process 是一个有效的 Popen 对象时才进行终止操作
@@ -26,6 +27,7 @@ def signal_handler(sig, frame):
         try:
             allure_process.terminate()
             allure_process.wait(timeout=3)
+            print("Allure 服务器已关闭")
         except subprocess.TimeoutExpired:
             allure_process.kill()
         except Exception as e:
@@ -93,54 +95,11 @@ def main():
     except subprocess.CalledProcessError as e:
         print(f"报告生成失败: {e}")
 
-    # 打开网页版测试报告
-    # try:
-    #     print("正在启动Allure报告服务器...")
-    #     with process_lock:
-    #         allure_process = subprocess.Popen(["allure", "open", allure_report_dir], shell=True)
-    #     print("服务器已启动")
-    #     print("浏览器已打开报告页面")
-    #     print("按 ESC 键停止服务器并退出程序")
-    #
-    #     # 检测键盘，按esc关闭程序
-    #     def check_keyboard():
-    #         try:
-    #             while True:
-    #                 with process_lock:
-    #                     if allure_process is None or \
-    #                             not hasattr(allure_process, 'poll') or \
-    #                             allure_process.poll() is not None:
-    #                         break
-    #
-    #                 if keyboard.is_pressed('esc'):
-    #                     print("\n检测到 ESC 键，正在退出...")
-    #                     signal_handler(signal.SIGINT, None)
-    #                     break
-    #                 time.sleep(0.1)  # 防止CPU占用过高
-    #         except Exception:
-    #             pass  # 忽略键盘检测中的异常
-    #
-    #     # 启动键盘检测线程
-    #     keyboard_thread = threading.Thread(target=check_keyboard, daemon=True)
-    #     keyboard_thread.start()
-    #
-    #     with process_lock:
-    #         if allure_process:
-    #             allure_process.wait()
-    # except FileNotFoundError:
-    #     print("提示: 未安装 allure 命令行工具，无法自动打开报告")
-    #     print(f"你可以手动打开 {allure_report_dir}/index.html 查看报告")
-    # except KeyboardInterrupt:
-    #     signal_handler(signal.SIGINT, None)
-    # except Exception as e:
-    #     print(f"启动报告服务器时出错: {e}")
-
-    # 打开网页版测试报告
     try:
         print("正在启动Allure报告服务器...")
         allure_process = subprocess.Popen(["allure", "open", allure_report_dir], shell=True)
         print(f"报告地址: {allure_report_dir}/index.html")
-        time.sleep(10)
+        time.sleep(5)
         signal_handler(signal.SIGINT, None)
     except Exception as e:
         print(f"启动服务器时出错: {e}")

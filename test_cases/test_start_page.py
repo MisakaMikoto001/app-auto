@@ -11,7 +11,7 @@ def test_start_page_elements_displayed(driver):
     # 可以先检查元素是否存在再等待可见
     try:
         element = start_page.find_element(start_page.AGREE_BUTTON, timeout=30)
-        print(f"找到元素: {element}")
+        print("找到元素: {element}")
     except:
         print("未能找到 AGREE_BUTTON 元素")
 
@@ -45,9 +45,9 @@ def test_click_reject_button(driver):
     # 添加调试信息，检查 REJECT_BUTTON 是否存在
     try:
         element = start_page.find_element(start_page.REJECT_BUTTON, timeout=10)
-        print(f"找到 REJECT_BUTTON 元素: {element}")
+        print("找到 REJECT_BUTTON 元素: {element}")
     except Exception as e:
-        print(f"未能找到 REJECT_BUTTON 元素: {e}")
+        print("未能找到 REJECT_BUTTON 元素: {e}")
         # 可以添加截图用于调试
         start_page.take_screenshot("reject_button_not_found.png")
 
@@ -109,3 +109,4 @@ def test_click_user_agreement(driver):
 
     # 验证应用是否关闭
     assert start_page.is_app_closed(), "应用未能成功关闭"
+

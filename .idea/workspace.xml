@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt">
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/Login_pop_up_verification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Login_pop_up_verification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_cases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/test_start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_start_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,9 +74,27 @@
     "SHELLCHECK.PATH": "C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/project/APP_Auto/app-auto",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="tests" factoryName="Autodetect">
+      <module name="APP_Auto" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13 (APP_Auto)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -226,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762497473870</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13">
+      <option name="closed" value="true" />
+      <created>1762500397776</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1762500397776</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,6 +275,7 @@
     <MESSAGE value="feat(login): 实现弹窗登录功能并添加相关测试用例&#10;&#10;- 新增登录业务流程类处理完整登录逻辑&#10;- 扩展基础页面类增加元素可见性判断和吐司断言方法&#10;- 更新弹窗登录页面元素定位和交互方法&#10;- 添加 Pixel 6 设备配置信息- 创建弹窗登录测试用例覆盖多种登录场景&#10;- 实现微信登录和退出登录功能- 优化页面元素检查和弹窗状态判断逻辑" />
     <MESSAGE value="feat(pages): 增强页面元素交互功能并更新SDK版本&#10;&#10;- 在 base_page.py 中添加 is_element_present 方法用于检查元素是否存在&#10;- 为 Tab_ablility.py 页面增加多个元素点击操作方法-重构 Tab_invite.py 页面，移除旧元素定位器并添加标签页导航方法- 重写 Tab_mine.py 页面元素定位器并扩展多种点击交互功能&#10;- 更新项目配置文件，将 Python SDK 版本从 3.12 升级至 3.13&#10;- 注释掉 run.py 中的调试打印信息&#10;- 清理 test_login.py 中被注释的测试代码&#10;- 更新 IDE 工作区配置以匹配新的 SDK 设置" />
     <MESSAGE value="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt" />
+    <MESSAGE value="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13" />
   </component>
 </project>
