@@ -10,8 +10,27 @@ from selenium.common.exceptions import TimeoutException
 import time
 import os
 
+class EmptyStateMixin():
+    """
+    空状态/断网状态处理混入类
+    """
+    EMPTY_ICON = (AppiumBy.ID, "icon")
+    EMPTY_TEXT = (AppiumBy.ID, "error_prompt_view")
+    EMPTY_BUTTON = (AppiumBy.ID, "retry_btn")
 
-class BasePage:
+    def is_empty_state_displayed(self):
+        """检查是否显示空状态/断网页面"""
+        return self.is_element_displayed(self.EMPTY_ICON)
+
+    def get_empty_state_text(self):
+        """获取空状态提示文本"""
+        return self.get_text(self.EMPTY_TEXT)
+
+    def click_retry_button(self):
+        """点击重试按钮"""
+        self.click_element(self.EMPTY_BUTTON)
+
+class BasePage(EmptyStateMixin):
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
@@ -310,3 +329,5 @@ class BasePage:
             return current_context is not None
         except Exception:
             return False
+
+

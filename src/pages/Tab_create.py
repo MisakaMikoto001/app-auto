@@ -30,6 +30,14 @@ class TabCreatePage(BasePage):
         """获取创作绘本标题"""
         return self.find_element(*self.CREATE_TITLE)
 
+    def get_picture_book_title(self):
+        """获取绘本标题"""
+        return self.find_element(*self.CREATIVE_PICTURE_BOOK_TITLES)
+
+    def get_picture_book_describe(self):
+        """获取绘本描述"""
+        return self.find_element(*self.CREATIVE_PICTURE_BOOK_DESCRIBE)
+
     def click_banner_jump(self):
         """点击横幅跳转"""
         self.click_element(*self.BANNER_JUMP)
@@ -38,13 +46,13 @@ class TabCreatePage(BasePage):
         """点击创作绘本封面"""
         self.click_element(*self.CREATIVE_PICTURE_BOOK_COVER)
 
-    def get_picture_book_title(self):
-        """获取绘本标题"""
-        return self.find_element(*self.CREATIVE_PICTURE_BOOK_TITLES)
+    def click_create_title(self):
+        """点击绘本标题"""
+        self.click_element(*self.CREATIVE_PICTURE_BOOK_TITLES)
 
-    def get_picture_book_describe(self):
-        """获取绘本描述"""
-        return self.find_element(*self.CREATIVE_PICTURE_BOOK_DESCRIBE)
+    def click_create_describe(self):
+        """点击绘本描述"""
+        self.click_element(*self.CREATIVE_PICTURE_BOOK_DESCRIBE)
 
     def click_go_create_button(self):
         """点击去创作按钮"""
