@@ -226,8 +226,9 @@ class BasePage(EmptyStateMixin):
 
     # -------------- 截图 --------------
     def take_screenshot(self, filename: str) -> None:
-        os.makedirs(self._SCREENSHOT_DIR, exist_ok=True)
-        full_path = os.path.join(self._SCREENSHOT_DIR, filename)
+        screenshot_dir = os.path.abspath(os.path.join("outputs", "screenshots"))
+        os.makedirs(screenshot_dir, exist_ok=True)
+        full_path = os.path.join(screenshot_dir, filename)
         logger.debug("take_screenshot: %s", full_path)
         self.driver.save_screenshot(full_path)
 
@@ -269,6 +270,7 @@ class BasePage(EmptyStateMixin):
             return False
 
     # -------------- 状态断言 --------------
+    # noinspection PyBroadException
     def is_app_closed(self, timeout: int = 10, message: str = "Application is still running") -> bool:
         try:
             activity = self.driver.current_activity
@@ -278,6 +280,7 @@ class BasePage(EmptyStateMixin):
         except Exception:
             return True
 
+    # noinspection PyBroadException
     def is_app_running(self, timeout: int = 10) -> bool:
         try:
             return self.driver.context is not None

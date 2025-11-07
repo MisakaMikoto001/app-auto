@@ -2,18 +2,19 @@ import pytest
 from src.pages.Start import StartPage
 
 
+# noinspection PyBroadException
 def test_start_page_elements_displayed(driver):
     """测试启动页面元素是否正常显示"""
     start_page = StartPage(driver)
 
     # 添加调试信息
-    print("检查 AGREE_BUTTON 是否存在...")
+    print(f"检查 AGREE_BUTTON 是否存在...")
     # 可以先检查元素是否存在再等待可见
     try:
         element = start_page.find_element(start_page.AGREE_BUTTON, timeout=30)
-        print("找到元素: {element}")
+        print(f"找到元素: {element}")
     except:
-        print("未能找到 AGREE_BUTTON 元素")
+        print(f"未能找到 AGREE_BUTTON 元素")
 
     # 等待启动页加载完成
     assert start_page.wait_for_start_page(), "启动页未正常加载"
@@ -44,10 +45,10 @@ def test_click_reject_button(driver):
 
     # 添加调试信息，检查 REJECT_BUTTON 是否存在
     try:
-        element = start_page.find_element(start_page.REJECT_BUTTON, timeout=10)
-        print("找到 REJECT_BUTTON 元素: {element}")
+        element = start_page.find_element(start_page.REJECT_BUTTON)
+        print(f"找到 REJECT_BUTTON 元素: {element}")
     except Exception as e:
-        print("未能找到 REJECT_BUTTON 元素: {e}")
+        print(f"未能找到 REJECT_BUTTON 元素: {e}")
         # 可以添加截图用于调试
         start_page.take_screenshot("reject_button_not_found.png")
 
