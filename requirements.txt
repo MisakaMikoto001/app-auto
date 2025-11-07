@@ -8,3 +8,4 @@ PyYAML==6.0.1
 
 # 更新所有依赖
 # pip install -r requirements.txt --upgrade
+#npm install -g allure-commandline
