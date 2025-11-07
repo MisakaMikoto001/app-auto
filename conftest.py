@@ -1,4 +1,3 @@
-# conftest.py
 import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
@@ -61,3 +60,35 @@ def driver():
                 time.sleep(2)
             else:
                 raise e
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_make_report(item, call):
+    """pytest钩子函数，用于生成测试报告"""
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+
+
+@pytest.fixture(scope="function", autouse=True)
+def screenshot_on_failure(request, driver):
+    """测试失败时自动截图保存"""
+    yield
+    # 检查测试是否失败
+    if request.node.rep_call.failed:
+        # 确保截图目录存在
+        screenshot_dir = os.path.abspath(os.path.join("outputs", "screenshots"))
+        os.makedirs(screenshot_dir, exist_ok=True)
+
+        # 生成截图文件名
+        test_name = request.node.name
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        screenshot_name = f"{test_name}_failure_{timestamp}.png"
+        screenshot_path = os.path.join(screenshot_dir, screenshot_name)
+
+        # 保存截图
+        try:
+            driver.save_screenshot(screenshot_path)
+            print(f"测试失败截图已保存至: {screenshot_path}")
+        except Exception as e:
+            print(f"保存失败截图时出错: {e}")

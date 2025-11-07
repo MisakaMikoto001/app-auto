@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin&#10;- 实现元素存在性、可见性检查与文本获取方法&#10;- 增加重试机制与窗口尺寸缓存优化滑动性能- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性&#10;-优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置">
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/test_start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_start_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762506882220</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式">
+      <option name="closed" value="true" />
+      <created>1762508224384</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1762508224384</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -284,6 +291,7 @@
     <MESSAGE value="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt" />
     <MESSAGE value="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13" />
     <MESSAGE value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin&#10;- 实现元素存在性、可见性检查与文本获取方法&#10;- 增加重试机制与窗口尺寸缓存优化滑动性能- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性&#10;-优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin&#10;- 实现元素存在性、可见性检查与文本获取方法&#10;- 增加重试机制与窗口尺寸缓存优化滑动性能- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性&#10;-优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置" />
+    <MESSAGE value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式" />
   </component>
 </project>
