@@ -72,6 +72,22 @@ def test_first_login_initialization(driver):
     assert first_login.driver == driver, "driver应该被正确传递"
 
 
+# def test_first_login_process_parameterized(first_login_business, login_test_data):
+#     """
+#     参数化测试首次手机登录流程使用不同凭证的场景
+#     从YAML文件中读取测试数据
+#     """
+#     # 对每个测试数据运行测试
+#     for test_case_data in login_test_data['first_login_phone_data']:
+#
+#         result = first_login_business.first_login_process_with_phone(
+#             test_case_data['phone'],
+#             test_case_data['code']
+#         )
+#
+#         expected = test_case_data['expected_result']
+#         assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
+
 def test_first_login_process_parameterized(first_login_business, login_test_data):
     """
     参数化测试首次手机登录流程使用不同凭证的场景
@@ -85,8 +101,13 @@ def test_first_login_process_parameterized(first_login_business, login_test_data
             test_case_data['code']
         )
 
+        # 验证结果,包含手机号、验证码、提示信息
         expected = test_case_data['expected_result']
         assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
+        if 'toast' in test_case_data:
+            actual_toast = first_login_business.is_toast_displayed(test_case_data['toast'])
+            assert actual_toast == test_case_data[
+                'toast'], f"测试用例 '{test_case_data['description']}' toast断言失败: 期望 '{test_case_data['toast']}', 实际 '{actual_toast}'"
 
 
 def test_login_process_with_wechat_success(first_login_business):

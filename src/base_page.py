@@ -235,6 +235,10 @@ class BasePage(EmptyStateMixin):
         except TimeoutException:
             return False
 
+    def get_toast_text(self, expected_text,timeout=5):
+        """获取吐司消息的文本"""
+
+
     def take_screenshot(self, filename):
         """截图并保存到指定路径"""
         # 创建截图保存目录

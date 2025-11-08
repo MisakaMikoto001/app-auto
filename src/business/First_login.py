@@ -9,10 +9,11 @@ from src.pages.Tab_create import TabCreatePage
 
 
 
-class FirstLoginBusiness():
+class FirstLoginBusiness(StartPageBusiness, TabCreatePage, PopUpLoginWeChatBusiness, PopUpLoginTelBusiness):
     """首次登录业务逻辑类"""
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
         self.start_page_business = StartPageBusiness(driver)
         self.popup_login_wechat_business = PopUpLoginWeChatBusiness(driver)

@@ -5,19 +5,23 @@ login_test_data:
     - phone: "1344444444"
       code: "1234"
       expected_result: false
-      description: "请输入正确的手机号"
+      description: "手机号不足位数"
+      toast: "请输入正确的手机号"
     - phone: "13444444444"
       code: "123"
       expected_result: false
-      description: "请输入正确的验证码"
+      description: "验证码不足位数"
+      toast: "请输入正确的验证码"
     - phone: ""
       code: ""
       expected_result: false
-      description: "请输入正确的手机号"
+      description: "空手机号和空验证码"
+      toast: "请输入正确的手机号"
     - phone: "13444444444"
       code: "1234"
       expected_result: true
-      description: "登录成功"
+      description: "成功登录"
+      toast: "登录成功"
 
   # 微信登录测试数据
   wechat_login_data:
