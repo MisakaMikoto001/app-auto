@@ -1,6 +1,4 @@
 import pytest
-from selenium.webdriver.common.devtools.v140.extensions import load_unpacked
-
 from src.pages.Start import StartPageBusiness
 
 
@@ -107,7 +105,6 @@ def test_click_privacy_policy(driver):
     if start_page.is_content_displayed():
         start_page.tap_coordinates(258,121,1000)
 
-    start_page.click_reject()
     start_page.clear_app_cache()
 
     # 验证应用是否关闭
@@ -134,7 +131,6 @@ def test_click_user_agreement(driver):
     if start_page.is_content_displayed():
         start_page.tap_coordinates(225,121,1000)
 
-    start_page.click_reject()
     start_page.clear_app_cache()
 
     # 验证应用是否关闭

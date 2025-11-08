@@ -69,34 +69,31 @@ class StartPage(BasePage):
 class StartPageBusiness(StartPage):
     """启动页面业务逻辑类"""
     def __init__(self, driver):
-        super().__init__(driver)  
-        
-    def start_page_get_in(self, retry_count = 0):
-        if retry_count >= 3:
-            print("已达到最大重试次数，启动页仍未显示")
-            return
+        super().__init__(driver)
 
-        self.wait_for_start_page()
-        
-        if self.is_agree_button_displayed():
-            self.click_agree()
-        else:
-            print("启动页未显示，正在清理缓存、重启APP。。。")
+    def start_page_get_in(self, retry_count=0):
+        if retry_count >= 3:
+            raise RuntimeError('启动页始终未出现')
+        try:
+            self.wait_for_start_page()  # 可能抛超时异常
+            if self.is_agree_button_displayed():
+                self.click_agree()
+        except Exception:
             self.clear_app_cache()
             self.close_app()
             self.launch_app()
-            self.start_page_get_in(retry_count+1)
+            self.start_page_get_in(retry_count + 1)
 
     def start_page_get_out(self, retry_count = 0):
         if retry_count >= 3:
             print("已达到最大重试次数，启动页仍未显示")
             return
 
-        self.wait_for_start_page()
-
-        if self.is_reject_button_displayed():
-            self.click_reject()
-        else:
+        try:
+            self.wait_for_start_page()
+            if self.is_reject_button_displayed():
+                self.click_reject()
+        except Exception:
             print("启动页未显示，正在清理缓存、重启APP。。。")
             self.clear_app_cache()
             self.close_app()
@@ -108,29 +105,29 @@ class StartPageBusiness(StartPage):
             print("已达到最大重试次数，启动页仍未显示")
             return
 
-        self.wait_for_start_page()
-
-        if self.is_content_displayed():
-            self.click_user_agreement(self.USER_AGREEMENT, ["用户协议"])
-            if (self.privacy_policy_page.is_content_displayed()
-                    and self.privacy_policy_page.is_title_displayed()
-                    and self.privacy_policy_page.get_title_text()=="用户协议"
+        try:
+            self.wait_for_start_page()
+            if self.is_content_displayed():
+                self.click_user_agreement(self.USER_AGREEMENT, ["用户协议"])
+                if (self.privacy_policy_page.is_content_displayed()
+                        and self.privacy_policy_page.is_title_displayed()
+                        and self.privacy_policy_page.get_title_text()=="用户协议"
+                    ):
+                    print("用户协议存在")
+                else:
+                    print("用户协议不存在")
+                self.go_back()
+                self.click_privacy_policy(self.PRIVACY_POLICY, ["隐私政策"])
+                if (self.privacy_policy_page.is_content_displayed()
+                        and self.privacy_policy_page.is_title_displayed()
+                        and self.privacy_policy_page.get_title_text()=="隐私政策"
                 ):
-                print("用户协议存在")
-            else:
-                print("用户协议不存在")
-            self.go_back()
-            self.click_privacy_policy(self.PRIVACY_POLICY, ["隐私政策"])
-            if (self.privacy_policy_page.is_content_displayed()
-                    and self.privacy_policy_page.is_title_displayed()
-                    and self.privacy_policy_page.get_title_text()=="隐私政策"
-            ):
-                print("隐私政策存在")
-            else:
-                print("隐私政策不存在")
+                    print("隐私政策存在")
+                else:
+                    print("隐私政策不存在")
 
-            self.close_app()
-        else:
+                self.close_app()
+        except Exception:
             print("启动页未显示，正在清理缓存、重启APP。。。")
             self.clear_app_cache()
             self.close_app()

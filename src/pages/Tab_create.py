@@ -29,7 +29,7 @@ class TabCreatePage(BasePage):
 
     def navigate_to_create(self):
         """切换到创作标签"""
-        self.click_element(*self.TAB_CREATE)
+        self.click_element(self.TAB_CREATE)
 
     def get_create_title(self):
         """获取创作绘本标题"""
@@ -85,5 +85,5 @@ class TabCreatePage(BasePage):
 
     def click_tab_mine(self):
         """点击我的标签"""
-        self.click_element(*self.TAB_MINE)
+        self.click_element(self.TAB_MINE)
 

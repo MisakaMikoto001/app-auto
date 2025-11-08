@@ -9,7 +9,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class PopUpLoginPage(BasePage):
     # 页面元素定位器
-    POPUP_TITLE = (AppiumBy.ID, "tv_title")
+    POPUP_TITLE = (AppiumBy.ID, "iv_title")
     CLOSE_BUTTON = (AppiumBy.ID, "btnClose")
     WECHAT_LOGIN_BUTTON = (AppiumBy.ID, "btnWechat")
     TEL_LOGIN_BUTTON = (AppiumBy.ID, "//*[@text='手机登录']")
@@ -102,6 +102,7 @@ class PopUpLoginWeChatBusiness(PopUpLoginPage):
         if self.popup_login_page.is_popup_displayed():
             # 点击微信登录
             self.popup_login_page.click_login_wechat()
+            self.popup_login_page.click_check_box()
             print("已选择微信登录")
             return True
         else:

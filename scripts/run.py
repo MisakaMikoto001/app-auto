@@ -52,11 +52,12 @@ def check_allure_installed() -> bool:
         bool: allure 是否可用
     """
     try:
-        subprocess.run(["allure", "--version"],
-                       check=True, capture_output=True)
+        result = subprocess.run(["allure", "--version"],
+                                check=True, capture_output=True, text=True)
+        logger.info(f"Allure 版本: {result.stdout.strip()}")
         return True
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        logger.warning("Allure 命令未安装或不可用")
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        logger.warning(f"Allure 命令未安装或不可用: {e}")
         return False
 
 
@@ -184,6 +185,11 @@ def main():
 
     # 运行测试
     test_return_code =  run_tests(test_cases_dir, reports_dir)
+
+    # 检查allure
+    if not check_allure_installed():
+        logger.info("跳过静态报告生成（Allure 未安装）")
+        sys.exit(test_return_code)
 
     # 生成静态HTML报告
     report_generated = False
