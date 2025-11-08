@@ -43,6 +43,10 @@ class TabMinePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def navigate_to_mine(self):
+        """切换到我的标签"""
+        self.click_element(self.TAB_MINE)
+
     def get_nickname(self):
         """获取昵称"""
         return self.get_text(self.NICK_NAME)

@@ -22,3 +22,7 @@ class TabIndexPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+
+    def navigate_to_index(self):
+        """切换到首页标签"""
+        self.click_element(self.TAB_INDEX)

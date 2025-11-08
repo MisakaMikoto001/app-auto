@@ -1,11 +1,11 @@
 import pytest
-from src.pages.Start import StartPage
+from src.pages.Start import StartPageBusiness
 
 
 # noinspection PyBroadException
 def test_start_page_elements_displayed(driver):
     """测试启动页面元素是否正常显示"""
-    start_page = StartPage(driver)
+    start_page = StartPageBusiness(driver)
 
     # 添加调试信息
     print(f"检查 AGREE_BUTTON 是否存在...")
@@ -27,7 +27,7 @@ def test_start_page_elements_displayed(driver):
 
 def test_click_agree_button(driver):
     """测试点击同意按钮进入APP"""
-    start_page = StartPage(driver)
+    start_page = StartPageBusiness(driver)
 
     # 点击同意按钮
     start_page.click_agree()
@@ -40,7 +40,7 @@ def test_click_agree_button(driver):
 
 def test_click_reject_button(driver):
     """测试点击不同意按钮退出APP"""
-    start_page = StartPage(driver)
+    start_page = StartPageBusiness(driver)
     start_page.launch_app()
 
     # 添加调试信息，检查 REJECT_BUTTON 是否存在
@@ -54,22 +54,23 @@ def test_click_reject_button(driver):
 
     # 点击不同意按钮
     start_page.click_reject()
-    start_page.clear_app_cache()
 
     # 验证应用是否关闭
     assert start_page.is_app_closed(), "应用未能成功关闭"
 
+    start_page.clear_app_cache()
+
 
 def test_click_privacy_policy(driver):
     """测试点击隐私政策链接"""
-    start_page = StartPage(driver)
+    start_page = StartPageBusiness(driver)
     start_page.launch_app()
 
     # 验证启动是否有显示
     if not start_page.is_agree_button_displayed():
         start_page.clear_app_cache()
         start_page.close_app()
-        start_page = StartPage(driver)
+        start_page = StartPageBusiness(driver)
 
     # # 点击隐私政策
     # expected_texts = ["隐私政策", "条款"]
@@ -88,14 +89,14 @@ def test_click_privacy_policy(driver):
 
 def test_click_user_agreement(driver):
     """测试点击用户协议链接"""
-    start_page = StartPage(driver)
+    start_page = StartPageBusiness(driver)
     start_page.launch_app()
 
     # 验证启动是否有显示
     if not start_page.is_agree_button_displayed():
         start_page.clear_app_cache()
         start_page.close_app()
-        start_page = StartPage(driver)
+        start_page = StartPageBusiness(driver)
 
     # # 点击用户协议
     # expected_texts = ["用户协议", "服务条款"]

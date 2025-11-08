@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test): 优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C 信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12&#10;- 移除冗余的运行配置和问题视图设置&#10;- 更新共享索引配置以匹配新版本 PyCharm&#10;- 调整历史提交记录，合并相关功能变更- 修复时间戳不一致的问题并清理无用">
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="fix(test):修正 pytest 报告生成钩子函数名称&#10;&#10;- 将 pytest_runtest_make_report 更名为 pytest_runtest_makereport- 修复因函数名错误导致的测试报告生成失败问题&#10;- 确保测试结果能够正确收集和处理&#10;- 更新相关注释以反映函数用途">
+      <change afterPath="$PROJECT_DIR$/src/pages/Policy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/First_use.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/First_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/Login_pop_up_verification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/Login_pop_up_verification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_ablility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_ablility.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_invite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_invite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_mine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_mine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/test_start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_start_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762565654109</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix(test):修正 pytest 报告生成钩子函数名称&#10;&#10;- 将 pytest_runtest_make_report 更名为 pytest_runtest_makereport- 修复因函数名错误导致的测试报告生成失败问题&#10;- 确保测试结果能够正确收集和处理&#10;- 更新相关注释以反映函数用途">
+      <option name="closed" value="true" />
+      <created>1762566075080</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1762566075080</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -252,6 +270,7 @@
     <MESSAGE value="feat(test): 添加测试报告生成功能并优化运行脚本&#10;&#10;- 新增 generate_report.py 脚本用于生成 allure 测试报告&#10;- 更新 run.py 脚本以支持更灵活的路径配置和错误处理&#10;- 优化测试报告生成逻辑，支持静态 HTML 报告输出&#10;- 改进项目环境配置，更新 Python SDK 版本至3.12&#10;- 更新 README.md 添加 allure 安装说明和命令行使用指引&#10;- 修复路径硬编码问题，使用动态路径构建提高脚本兼容性" />
     <MESSAGE value="feat(test):优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12" />
     <MESSAGE value="feat(test): 优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C 信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12&#10;- 移除冗余的运行配置和问题视图设置&#10;- 更新共享索引配置以匹配新版本 PyCharm&#10;- 调整历史提交记录，合并相关功能变更- 修复时间戳不一致的问题并清理无用" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(test): 优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C 信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12&#10;- 移除冗余的运行配置和问题视图设置&#10;- 更新共享索引配置以匹配新版本 PyCharm&#10;- 调整历史提交记录，合并相关功能变更- 修复时间戳不一致的问题并清理无用" />
+    <MESSAGE value="fix(test):修正 pytest 报告生成钩子函数名称&#10;&#10;- 将 pytest_runtest_make_report 更名为 pytest_runtest_makereport- 修复因函数名错误导致的测试报告生成失败问题&#10;- 确保测试结果能够正确收集和处理&#10;- 更新相关注释以反映函数用途" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(test):修正 pytest 报告生成钩子函数名称&#10;&#10;- 将 pytest_runtest_make_report 更名为 pytest_runtest_makereport- 修复因函数名错误导致的测试报告生成失败问题&#10;- 确保测试结果能够正确收集和处理&#10;- 更新相关注释以反映函数用途" />
   </component>
 </project>

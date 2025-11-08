@@ -20,50 +20,63 @@ class LoginPopUpBusiness:
 
     # 首页弹窗登录验证
     def index_popup_login(self):
-        if self.popup_login_page.is_popup_displayed():
-            self.popup_login_page.close_popup()
+        pass
 
     # 创作页弹窗调起
     def create_popup_login(self):
         if self.popup_login_page.is_popup_displayed():
+            self.tab_create_page.navigate_to_create()
             # 点击横幅跳转
             self.tab_create_page.click_banner_jump()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击BANNER_JUMP未弹出登录弹窗")
 
             # 点击创作绘本封面
             self.tab_create_page.click_creative_picture_book()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击CREATIVE_PICTURE_BOOK_COVER未弹出登录弹窗")
 
             # 点击创作绘本标题
             self.tab_create_page.click_create_title()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击CREATIVE_PICTURE_BOOK_TITLES未弹出登录弹窗")
 
             # 点击创作绘本描述
             self.tab_create_page.click_create_describe()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击CREATIVE_PICTURE_BOOK_DESCRIBE未弹出登录弹窗")
 
             # 点击去创作按钮
             self.tab_create_page.click_go_create_button()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击GO_CREATE_BUTTON未弹出登录弹窗")
 
             # 点击一键创作
             self.tab_create_page.click_one_click_creation()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击ONE_CLICK_CREATION未弹出登录弹窗")
 
             # 关闭最终的弹窗
-            self.popup_login_page.close_popup()
+            if self.popup_login_page.is_popup_displayed():
+                self.popup_login_page.close_popup()
 
     # 能力页弹窗调起
     def ability_popup_login(self):
@@ -73,18 +86,38 @@ class LoginPopUpBusiness:
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击CAROUSEL_CHART未弹出登录弹窗")
 
             # 点击购买按钮
             self.tab_ability_page.click_ability_buy()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击ABILITY_BUY未弹出登录弹窗")
 
             # 点击封面
             self.tab_ability_page.click_ability_cover()
             if self.popup_login_page.is_popup_displayed():
                 self.popup_login_page.close_popup()
                 return
+            else:
+                print(f"点击ABILITY_COVER未弹出登录弹窗")
 
             # 关闭最终的弹窗
-            self.popup_login_page.close_popup()
+            if self.popup_login_page.is_popup_displayed():
+                self.popup_login_page.close_popup()
+
+    # 邀请页弹窗调起
+    def invite_popup_login(self):
+        pass
+
+    # 我的页弹窗调起
+    def mine_popup_login(self):
+        if self.popup_login_page.is_popup_displayed():
+            self.tab_mine_page.navigate_to_mine()
+            if self.popup_login_page.is_popup_displayed():
+                self.popup_login_page.close_popup()
+            else:
+                print(f"点击TAB_MINE未弹出登录弹窗")

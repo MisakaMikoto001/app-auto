@@ -20,6 +20,10 @@ class TabAbilityPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def navigate_to_ability(self):
+        """切换到能力标签"""
+        self.click_element(self.TAB_ABILITY)
+
     # 检查元素是否存在的方法
     def is_element_exists(self, locator):
         """检查元素是否存在"""

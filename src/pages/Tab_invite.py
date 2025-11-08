@@ -18,6 +18,10 @@ class TabInvitePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def navigate_to_invitation(self):
+        """切换到邀请标签"""
+        self.click_element(self.TAB_INVITATION)
+
     def click_tab_index(self):
         """点击首页标签"""
         self.click_element(self.TAB_INDEX)

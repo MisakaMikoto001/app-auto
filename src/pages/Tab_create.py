@@ -26,6 +26,10 @@ class TabCreatePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def navigate_to_create(self):
+        """切换到创作标签"""
+        self.click_element(self.TAB_CREATE)
+
     def get_create_title(self):
         """获取创作绘本标题"""
         return self.find_element(*self.CREATE_TITLE)
