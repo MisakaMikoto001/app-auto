@@ -1,147 +1,58 @@
+# First_login.py
 """
-登录业务流程类
-处理从应用启动到登录完成的完整业务流程
+首次登录业务逻辑类
 """
 
-from src.pages.Start import StartPage
-from src.pages.Pop_up_login import PopUpLoginPage
+from src.pages.Start import StartPageBusiness
+from src.pages.Pop_up_login import PopUpLoginBusiness
+from src.pages.Tab_create import TabCreatePage
 
 
-class LoginBusiness:
-    """登录业务流程类"""
+class FirstLoginBusiness:
+    """首次登录业务逻辑类"""
 
     def __init__(self, driver):
-        """
-        初始化登录业务流程
-
-        Args:
-            driver: Appium WebDriver实例
-        """
         self.driver = driver
-        self.start_page = StartPage(driver)
-        self.popup_login_page = PopUpLoginPage(driver)
+        self.start_page_business = StartPageBusiness(driver)
+        self.popup_login_page = PopUpLoginBusiness(driver)
+        self.tab_create_page = TabCreatePage(driver)
 
-    def bring_up_the_login_pop_up(self):
-        """
-        处理启动页面并显示登录弹窗
+    def first_login_process_with_phone(self,phone, code):
+        """首次手机登录完整流程"""
+        # 1. 启动APP并同意协议进入
+        self.start_page_business.start_page_get_in()
 
-        Returns:
-            bool: 登录弹窗已显示返回True
-        """
-        return self.start_page.wait_for_start_page()
+        # 2. 进入创作页
+        self.tab_create_page.navigate_to_create()
 
-    def first_launch_and_login(self, phone_number, verification_code):
-        """
-        首次启动应用并登录
+        # 3. 触发登录弹窗（点击一键创作）
+        self.tab_create_page.click_one_click_creation()
 
-        Args:
-            phone_number (str): 手机号码
-            verification_code (str): 验证码
-
-        Returns:
-            bool: 登录成功返回True
-        """
-        # 处理启动页面
-        if self.start_page.wait_for_start_page():
-            self.start_page.click_agree()
-
-        # 等待登录弹窗出现
+        # 4. 检查弹窗是否显示
         if self.popup_login_page.is_popup_displayed():
-            # 点击手机登录
-            self.popup_login_page.click_login_tel()
-
-            # 确保手机登录界面已显示
-            if self.popup_login_page.is_popup_tel_displayed():
-                # 输入手机号和验证码
-                self.popup_login_page.input_user_tel(phone_number)
-                self.popup_login_page.input_user_code(verification_code)
-
-                # 勾选协议
-                self.popup_login_page.click_check_box()
-
-                # 点击登录
-                self.popup_login_page.click_login()
-
-                # 验证登录成功
-                return self.popup_login_page.is_toast_displayed("登录成功")
-
-        return False
-
-    def login_with_popup(self, phone_number, verification_code):
-        """
-        通过弹窗登录（非首次启动）
-
-        Args:
-            phone_number (str): 手机号码
-            verification_code (str): 验证码
-
-        Returns:
-            bool: 登录成功返回True
-        """
-        # 确保登录弹窗已显示
-        if self.popup_login_page.is_popup_displayed():
-            # 点击手机登录
-            self.popup_login_page.click_login_tel()
-
-            # 确保手机登录界面已显示
-            if self.popup_login_page.is_popup_tel_displayed():
-                # 输入手机号和验证码
-                self.popup_login_page.input_user_tel(phone_number)
-                self.popup_login_page.input_user_code(verification_code)
-
-                # 勾选协议
-                self.popup_login_page.click_check_box()
-
-                # 点击登录
-                self.popup_login_page.click_login()
-
-                # 验证登录成功
-                return self.popup_login_page.is_toast_displayed("登录成功")
-
-        return False
-
-    def wechat_login(self):
-        """
-        微信登录流程
-
-        Returns:
-            bool: 登录流程启动成功返回True
-        """
-        # 确保登录弹窗已显示
-        if self.popup_login_page.is_popup_displayed():
-            # 点击微信登录
-            self.popup_login_page.click_login_wechat()
+            print("登录弹窗已显示")
+            self.popup_login_page.login_with_phone(phone, code)
             return True
+        else:
+            print("登录弹窗未显示")
+            return False
 
-        return False
+    def first_login_process_with_wechat(self):
+        """首次微信登录完整流程"""
+        # 1. 启动APP并同意协议进入
+        self.start_page_business.start_page_get_in()
 
-    def logout(self):
-        """
-        退出登录
+        # 2. 进入创作页
+        self.tab_create_page.navigate_to_create()
 
-        Returns:
-            bool: 退出成功返回True
-        """
-        try:
-            # 启动应用
-            self.popup_login_page.launch_app()
+        # 3. 触发登录弹窗（点击一键创作）
+        self.tab_create_page.click_one_click_creation()
 
-            # 点击我的页面
-            self.popup_login_page.click_element(("id", "tab_mine"))
-
-            # 点击设置
-            self.popup_login_page.click_element(("id", "siv_mine_settings"))
-
-            # 点击退出登录
-            self.popup_login_page.click_element(("id", "stv_log_out"))
-
-            # 确认退出
-            self.popup_login_page.click_element(("id", "confirm"))
-
-            # 关闭应用
-            self.popup_login_page.close_app()
-
+        # 4. 检查弹窗是否显示
+        if self.popup_login_page.is_popup_displayed():
+            print("登录弹窗已显示")
+            self.popup_login_page.login_with_wechat()
             return True
-        except Exception as e:
-            print(f"退出登录失败: {e}")
+        else:
+            print("登录弹窗未显示")
             return False
