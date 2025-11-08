@@ -1,4 +1,6 @@
 import pytest
+from selenium.webdriver.common.devtools.v140.extensions import load_unpacked
+
 from src.pages.Start import StartPageBusiness
 
 
@@ -7,9 +9,14 @@ def test_start_page_elements_displayed(driver):
     """测试启动页面元素是否正常显示"""
     start_page = StartPageBusiness(driver)
 
-    # 添加调试信息
-    print(f"检查 AGREE_BUTTON 是否存在...")
-    # 可以先检查元素是否存在再等待可见
+    if start_page.is_app_running():
+        start_page.clear_app_cache()
+        start_page.close_app()
+        start_page.launch_app()
+    else:
+        start_page.clear_app_cache()
+        start_page.launch_app()
+
     try:
         element = start_page.find_element(start_page.AGREE_BUTTON, timeout=30)
         print(f"找到元素: {element}")
@@ -24,10 +31,24 @@ def test_start_page_elements_displayed(driver):
     assert start_page.is_title_displayed(), "标题未显示"
     assert start_page.is_content_displayed(), "内容未显示"
 
-
+# noinspection PyBroadException
 def test_click_agree_button(driver):
     """测试点击同意按钮进入APP"""
     start_page = StartPageBusiness(driver)
+
+    if start_page.is_app_running():
+        start_page.clear_app_cache()
+        start_page.close_app()
+        start_page.launch_app()
+    else:
+        start_page.clear_app_cache()
+        start_page.launch_app()
+
+    try:
+        element = start_page.find_element(start_page.AGREE_BUTTON, timeout=30)
+        print(f"找到元素: {element}")
+    except:
+        print(f"未能找到 AGREE_BUTTON 元素")
 
     # 点击同意按钮
     start_page.click_agree()
@@ -38,19 +59,24 @@ def test_click_agree_button(driver):
     # 验证应用是否关闭
     assert start_page.is_app_closed(), "应用未关闭"
 
+# noinspection PyBroadException
 def test_click_reject_button(driver):
     """测试点击不同意按钮退出APP"""
     start_page = StartPageBusiness(driver)
-    start_page.launch_app()
 
-    # 添加调试信息，检查 REJECT_BUTTON 是否存在
+    if start_page.is_app_running():
+        start_page.clear_app_cache()
+        start_page.close_app()
+        start_page.launch_app()
+    else:
+        start_page.clear_app_cache()
+        start_page.launch_app()
+
     try:
-        element = start_page.find_element(start_page.REJECT_BUTTON)
-        print(f"找到 REJECT_BUTTON 元素: {element}")
-    except Exception as e:
-        print(f"未能找到 REJECT_BUTTON 元素: {e}")
-        # 可以添加截图用于调试
-        start_page.take_screenshot("reject_button_not_found.png")
+        element = start_page.find_element(start_page.REJECT_BUTTON, timeout=30)
+        print(f"找到元素: {element}")
+    except:
+        print(f"未能找到 REJECT_BUTTON 元素")
 
     # 点击不同意按钮
     start_page.click_reject()
@@ -60,17 +86,18 @@ def test_click_reject_button(driver):
 
     start_page.clear_app_cache()
 
-
+# noinspection PyBroadException
 def test_click_privacy_policy(driver):
     """测试点击隐私政策链接"""
     start_page = StartPageBusiness(driver)
-    start_page.launch_app()
 
-    # 验证启动是否有显示
-    if not start_page.is_agree_button_displayed():
+    if start_page.is_app_running():
         start_page.clear_app_cache()
         start_page.close_app()
-        start_page = StartPageBusiness(driver)
+        start_page.launch_app()
+    else:
+        start_page.clear_app_cache()
+        start_page.launch_app()
 
     # # 点击隐私政策
     # expected_texts = ["隐私政策", "条款"]
@@ -86,17 +113,18 @@ def test_click_privacy_policy(driver):
     # 验证应用是否关闭
     assert start_page.is_app_closed(), "应用未能成功关闭"
 
-
+# noinspection PyBroadException
 def test_click_user_agreement(driver):
     """测试点击用户协议链接"""
     start_page = StartPageBusiness(driver)
-    start_page.launch_app()
 
-    # 验证启动是否有显示
-    if not start_page.is_agree_button_displayed():
+    if start_page.is_app_running():
         start_page.clear_app_cache()
         start_page.close_app()
-        start_page = StartPageBusiness(driver)
+        start_page.launch_app()
+    else:
+        start_page.clear_app_cache()
+        start_page.launch_app()
 
     # # 点击用户协议
     # expected_texts = ["用户协议", "服务条款"]
@@ -112,3 +140,5 @@ def test_click_user_agreement(driver):
     # 验证应用是否关闭
     assert start_page.is_app_closed(), "应用未能成功关闭"
 
+if __name__ == "__main__":
+    pytest.main()

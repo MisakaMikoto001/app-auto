@@ -1,0 +1,34 @@
+# 测试数据配置
+login_test_data:
+  # 首次登录手机号测试数据
+  first_login_phone_data:
+    - phone: "13444444444"
+      code: "1234"
+      expected_result: true
+      description: "有效手机号和验证码"
+    - phone: "1344444444"
+      code: "1234"
+      expected_result: false
+      description: "无效手机号（位数不足）"
+    - phone: "13444444444"
+      code: "123"
+      expected_result: false
+      description: "无效验证码（位数不足）"
+    - phone: ""
+      code: ""
+      expected_result: false
+      description: "空手机号和验证码"
+
+  # 微信登录测试数据
+  wechat_login_data:
+    - description: "微信登录成功场景"
+      expected_result: true
+    - description: "微信登录弹窗未显示场景"
+      expected_result: false
+      popup_displayed: false
+
+  # 手机登录测试数据
+  phone_login_data:
+    - description: "手机登录弹窗未显示场景"
+      expected_result: false
+      popup_displayed: false

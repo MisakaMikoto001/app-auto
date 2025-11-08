@@ -91,7 +91,7 @@ class PopUpLoginPage(BasePage):
         """关闭弹窗"""
         self.click_element(self.CLOSE_BUTTON)
 
-class PopUpLoginBusiness(PopUpLoginPage):
+class PopUpLoginWeChatBusiness(PopUpLoginPage):
     """弹窗登录业务逻辑类"""
     def __init__(self, driver):
         super().__init__(driver)
@@ -108,6 +108,12 @@ class PopUpLoginBusiness(PopUpLoginPage):
             print("登录弹窗未显示，无法进行微信登录")
             return False
 
+class PopUpLoginTelBusiness(PopUpLoginPage):
+    """弹窗登录业务逻辑类"""
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.popup_login_page = PopUpLoginPage(driver)
+
     def login_with_phone(self, phone, code):
         """手机号登录流程"""
         if self.popup_login_page.is_popup_displayed():
@@ -115,13 +121,14 @@ class PopUpLoginBusiness(PopUpLoginPage):
             self.popup_login_page.click_login_tel()
 
             # 输入手机号
-            self.popup_login_page.input_user_tel(phone)
+            if self.popup_login_page.is_popup_tel_displayed():
+                self.popup_login_page.input_user_tel(phone)
 
-            # 输入验证码
-            self.popup_login_page.input_user_code(code)
+                # 输入验证码
+                self.popup_login_page.input_user_code(code)
 
-            # 勾选协议
-            self.popup_login_page.click_check_box()
+                # 勾选协议
+                self.popup_login_page.click_check_box()
 
             # 点击登录按钮
             self.popup_login_page.click_login()

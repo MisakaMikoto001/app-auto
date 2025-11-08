@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test): 增加登录弹窗验证和隐私政策页面对象&#10;&#10;- 新增隐私政策页面对象类 Policy.py&#10;- 修改启动页业务逻辑，增加隐私政策和用户协议检查方法&#10;- 优化各标签页导航方法，支持自动切换标签&#10;- 完善登录弹窗验证逻辑，增加未弹窗情况的日志输出&#10;- 更新测试用例引用，使用 StartPageBusiness 替代 StartPage&#10;-修复首页弹窗登录验证逻辑，暂时跳过验证- 增加创作页、能力页、我的页等弹窗调起验证逻辑&#10;- 添加邀请页弹窗调起方法框架- 调整测试报告生成钩子函数名称，修复报告生成问题">
-      <change afterPath="$PROJECT_DIR$/test_data/data.yml" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作&#10;- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑&#10;- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪">
+      <change afterPath="$PROJECT_DIR$/test_cases/test_002_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_data/login_data.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run_parallel.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_parallel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/First_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/First_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Tab_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Tab_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/test_login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/test_start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_001_start_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/data.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +68,12 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python 测试.Python 测试 (Start.py 内).executor": "Run",
-    "Python 测试.Python 测试 (test_start_page.py 内).executor": "Run",
-    "Python.conftest.executor": "Run",
+    "Python 测试.Python 测试 (run.py 内).executor": "Debug",
+    "Python 测试.Python 测试 (test_start_page.py 内).executor": "Debug",
+    "Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试.executor": "Run",
+    "Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试.executor": "Run",
+    "Python.Tab_create.executor": "Run",
+    "Python.conftest.executor": "Debug",
     "Python.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -72,11 +81,102 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SHELLCHECK.PATH": "C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/project/APP_Auto/app-auto",
     "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
+  <component name="RunManager" selected="Python.run">
+    <configuration name="Tab_create" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="APP_Auto" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pages" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pages/Tab_create.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="APP_Auto" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (app-auto)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="APP_Auto" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_cases.test_001_start_page.test_click_privacy_policy&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="APP_Auto" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_cases.test_001_start_page.test_click_user_agreement&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.run" />
+      <item itemvalue="Python.Tab_create" />
+      <item itemvalue="Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试" />
+      <item itemvalue="Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Tab_create" />
+        <item itemvalue="Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试" />
+        <item itemvalue="Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -252,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762570487130</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作&#10;- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑&#10;- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪">
+      <option name="closed" value="true" />
+      <created>1762576771468</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1762576771468</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -276,6 +384,7 @@
     <MESSAGE value="feat(test): 优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C 信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12&#10;- 移除冗余的运行配置和问题视图设置&#10;- 更新共享索引配置以匹配新版本 PyCharm&#10;- 调整历史提交记录，合并相关功能变更- 修复时间戳不一致的问题并清理无用" />
     <MESSAGE value="fix(test):修正 pytest 报告生成钩子函数名称&#10;&#10;- 将 pytest_runtest_make_report 更名为 pytest_runtest_makereport- 修复因函数名错误导致的测试报告生成失败问题&#10;- 确保测试结果能够正确收集和处理&#10;- 更新相关注释以反映函数用途" />
     <MESSAGE value="feat(test): 增加登录弹窗验证和隐私政策页面对象&#10;&#10;- 新增隐私政策页面对象类 Policy.py&#10;- 修改启动页业务逻辑，增加隐私政策和用户协议检查方法&#10;- 优化各标签页导航方法，支持自动切换标签&#10;- 完善登录弹窗验证逻辑，增加未弹窗情况的日志输出&#10;- 更新测试用例引用，使用 StartPageBusiness 替代 StartPage&#10;-修复首页弹窗登录验证逻辑，暂时跳过验证- 增加创作页、能力页、我的页等弹窗调起验证逻辑&#10;- 添加邀请页弹窗调起方法框架- 调整测试报告生成钩子函数名称，修复报告生成问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(test): 增加登录弹窗验证和隐私政策页面对象&#10;&#10;- 新增隐私政策页面对象类 Policy.py&#10;- 修改启动页业务逻辑，增加隐私政策和用户协议检查方法&#10;- 优化各标签页导航方法，支持自动切换标签&#10;- 完善登录弹窗验证逻辑，增加未弹窗情况的日志输出&#10;- 更新测试用例引用，使用 StartPageBusiness 替代 StartPage&#10;-修复首页弹窗登录验证逻辑，暂时跳过验证- 增加创作页、能力页、我的页等弹窗调起验证逻辑&#10;- 添加邀请页弹窗调起方法框架- 调整测试报告生成钩子函数名称，修复报告生成问题" />
+    <MESSAGE value="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作&#10;- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑&#10;- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作&#10;- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑&#10;- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
   </component>
 </project>

@@ -172,7 +172,7 @@ def main():
     # 获取项目根目录路径
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # 构建正确的路径
+    # 构建路径
     reports_dir = os.path.join(project_root, "outputs", "reports")
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     allure_report_dir = os.path.join(project_root, "outputs", "allure-report", f"test_{timestamp}")
@@ -183,7 +183,7 @@ def main():
     os.makedirs(os.path.dirname(allure_report_dir), exist_ok=True)
 
     # 运行测试
-    test_returncode = run_tests(test_cases_dir, reports_dir)
+    test_return_code =  run_tests(test_cases_dir, reports_dir)
 
     # 生成静态HTML报告
     report_generated = False
@@ -202,7 +202,7 @@ def main():
                 # 正常的中断处理
                 signal_handler(signal.SIGINT, None)
 
-    sys.exit(test_returncode)
+    sys.exit(test_return_code)
 
 
 if __name__ == "__main__":

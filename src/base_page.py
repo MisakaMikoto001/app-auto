@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """
 所有页面对象的基类，封装滑动、等待、截图
 优化版：Python 3.13.5，零侵入，旧脚本无需改动
 """
 from __future__ import annotations
-
 import os
 import time
 import logging
@@ -89,32 +87,41 @@ class BasePage(EmptyStateMixin):
         return self.driver.get_window_size()
 
     # -------------- 元素查找 --------------
-    def is_element_present(self, locator: Tuple[str, str], timeout: int = 10) -> bool:
+    @staticmethod
+    def _adapt_locator(locator: Tuple[AppiumBy, str]) -> Tuple[str, str]:
+        """将 AppiumBy 枚举转换为字符串定位策略"""
+        by, value = locator
+        return by.name, value
+
+    def is_element_present(self, locator: Tuple[AppiumBy, str], timeout: int = 10) -> bool:
         try:
             self._retry(lambda: self.find_element(locator, timeout))()
             return True
         except TimeoutException:
             return False
 
-    def find_element(self, locator: Tuple[str, str], timeout: int = 10):
+    def find_element(self, locator: Tuple[AppiumBy, str], timeout: int = 10):
+        adapted_locator = self._adapt_locator(locator)
         return self._retry(
-            lambda: self._wait.until(EC.presence_of_element_located(locator))
+            lambda: self._wait.until(EC.presence_of_element_located(adapted_locator))
         )()
 
-    def find_elements(self, locator: Tuple[str, str], timeout: int = 10) -> List[Any]:
+    def find_elements(self, locator: Tuple[AppiumBy, str], timeout: int = 10) -> List[Any]:
+        adapted_locator = self._adapt_locator(locator)
         return self._retry(
-            lambda: self._wait.until(EC.presence_of_all_elements_located(locator))
+            lambda: self._wait.until(EC.presence_of_all_elements_located(adapted_locator))
         )()
 
-    def get_text(self, locator: Tuple[str, str], timeout: int = 10) -> str:
+    def get_text(self, locator: Tuple[AppiumBy, str], timeout: int = 10) -> str:
         return self.find_element(locator, timeout).text
 
-    def click_element(self, locator: Tuple[str, str], timeout: int = 10) -> None:
+    def click_element(self, locator: Tuple[AppiumBy, str], timeout: int = 10) -> None:
+        adapted_locator = self._adapt_locator(locator)
         self._retry(
-            lambda: self._wait.until(EC.element_to_be_clickable(locator))
+            lambda: self._wait.until(EC.element_to_be_clickable(adapted_locator))
         )().click()
 
-    def input_text(self, locator: Tuple[str, str], text: str, timeout: int = 10) -> None:
+    def input_text(self, locator: Tuple[AppiumBy, str], text: str, timeout: int = 10) -> None:
         ele = self.find_element(locator, timeout)
         ele.clear()
         ele.send_keys(text)
@@ -226,7 +233,8 @@ class BasePage(EmptyStateMixin):
 
     # -------------- 截图 --------------
     def take_screenshot(self, filename: str) -> None:
-        screenshot_dir = os.path.abspath(os.path.join("outputs", "screenshots"))
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        screenshot_dir = os.path.join(project_root, "outputs", "screenshots")
         os.makedirs(screenshot_dir, exist_ok=True)
         full_path = os.path.join(screenshot_dir, filename)
         logger.debug("take_screenshot: %s", full_path)

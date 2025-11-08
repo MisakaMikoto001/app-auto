@@ -9,11 +9,6 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class TabIndexPage(BasePage):
     # 页面元素定位器
-    INDEX_TITLE = (AppiumBy.ID, "index_title_id")
-    SEARCH_INPUT = (AppiumBy.ID, "search_input_id")
-    BANNER_IMAGE = (AppiumBy.ID, "banner_image_id")
-    MENU_LIST = (AppiumBy.ID, "menu_list_id")
-    BACK_BUTTON = (AppiumBy.ID, "back_button_id")
     TAB_INDEX = (AppiumBy.ID, "tab_index")
     TAB_CREATE = (AppiumBy.ID, "tab_create")
     TAB_ABILITY = (AppiumBy.ID, "tab_ability")
