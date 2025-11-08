@@ -63,7 +63,7 @@ def driver():
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_make_report(item, call):
+def pytest_runtest_makereport(item, call):
     """pytest钩子函数，用于生成测试报告"""
     outcome = yield
     rep = outcome.get_result()
