@@ -5,10 +5,7 @@ import argparse
 import sys
 import signal
 from datetime import datetime
-import logging
 from typing import Optional
-
-# 配置日志
 import logging.handlers
 
 # 创建日志目录
@@ -286,9 +283,6 @@ def main():
 
     os.environ["DEVICE_NAME"] = args.device
     os.environ["APP_PATH"] = os.path.abspath(args.apk)
-
-    # 获取项目根目录路径
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # 构建路径
     reports_dir = os.path.join(project_root, "outputs", "reports")

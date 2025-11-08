@@ -4,7 +4,9 @@ from appium.options.android import UiAutomator2Options
 import os
 import time
 from src.common.yaml_reader import YamlReader
+import sys
 
+project_root = os.path.dirname(os.path.abspath(__file__))
 
 @pytest.fixture(scope="session")
 def driver():
@@ -66,8 +68,16 @@ def driver():
 def pytest_runtest_makereport(item, call):
     """pytest钩子函数，用于生成测试报告"""
     outcome = yield
-    rep = outcome.get_result()
-    setattr(item, "rep_" + rep.when, rep)
+    try:
+        rep = outcome.get_result()
+        # 使用更安全的方式设置属性，避免覆盖已有属性
+        attr_name = "rep_" + rep.when
+        if not hasattr(item, attr_name):
+            setattr(item, attr_name, rep)
+    except Exception as e:
+        # 记录异常但不中断测试执行
+        print(f"pytest_runtest_makereport 钩子函数异常: {e}")
+
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -77,18 +87,35 @@ def screenshot_on_failure(request, driver):
     # 检查测试是否失败
     if request.node.rep_call.failed:
         # 确保截图目录存在
-        screenshot_dir = os.path.abspath(os.path.join("outputs", "screenshots"))
+        screenshot_dir = os.path.join(project_root, "outputs", "screenshots")
         os.makedirs(screenshot_dir, exist_ok=True)
 
-        # 生成截图文件名
-        test_name = request.node.name
+        # 生成截图文件名（避免特殊字符）
+        test_name = "".join(c for c in request.node.name if c.isalnum() or c in (' ', '-', '_')).rstrip()
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         screenshot_name = f"{test_name}_failure_{timestamp}.png"
         screenshot_path = os.path.join(screenshot_dir, screenshot_name)
+        screenshot_path = os.path.abspath(screenshot_path)
 
         # 保存截图
         try:
-            driver.save_screenshot(screenshot_path)
-            print(f"测试失败截图已保存至: {screenshot_path}")
+            if sys.platform.startswith('win'):
+                os.system(f"dir > nul")  # Windows刷新
+
+            time.sleep(1)  # 等待文件写入
+
+            # 检查文件
+            if os.path.exists(screenshot_path):
+                file_size = os.path.getsize(screenshot_path)
+                print(f"截图已保存成功: {screenshot_path}, 大小: {file_size} 字节")
+            else:
+                print(f"截图文件未找到: {screenshot_path}")
+                # 列出目录内容
+                files = os.listdir(screenshot_dir) if os.path.exists(screenshot_dir) else []
+                print(f"目录中的文件: {files}")
+
         except Exception as e:
-            print(f"保存失败截图时出错: {e}")
+            print(f"保存截图时发生异常: {type(e).__name__}: {e}")
+            import traceback
+            traceback.print_exc()
+

@@ -5,7 +5,7 @@
 
 from src.base_page import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-
+import re
 
 class PopUpLoginPage(BasePage):
     # 页面元素定位器
@@ -119,6 +119,19 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
         super().__init__(driver)
         self.popup_login_page = PopUpLoginPage(driver)
 
+    @staticmethod
+    def validate_phone_format(phone):
+        """验证手机号格式是否正确(11位中国手机号)"""
+        pattern = r'^1[3-9]\d{9}$'
+        return bool(re.match(pattern, phone))
+
+    @staticmethod
+    def validate_verification_code(code):
+        """验证验证码格式是否正确(4位数字)"""
+        pattern = r'^\d{4}$'
+        return bool(re.match(pattern, code))
+
+
     def login_with_phone(self, phone, code):
         """手机号登录流程"""
         if self.popup_login_page.is_popup_displayed():
@@ -136,9 +149,14 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
                 self.popup_login_page.click_check_box_2()
 
                 # 点击登录按钮
-                self.popup_login_page.click_login()
-
-            print(f"已使用手机号 {phone} 登录")
+                if phone and self.validate_phone_format(phone):
+                    if code and self.validate_verification_code(code):
+                        self.popup_login_page.click_login()
+                        print(f"已使用手机号 {phone} 登录")
+                    else:
+                        print("验证码格式错误")
+                else:
+                    print("手机号格式错误")
             return True
         else:
             print("登录弹窗未显示，无法进行手机号登录")

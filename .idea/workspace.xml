@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="refactor(base_page):重构基础页面类以提升稳定性和可维护性&#10;&#10;- 移除日志模块和空状态混入类的复杂实现&#10;- 简化元素查找与等待机制，移除自定义重试逻辑- 更新滑动方法实现，直接调用驱动程序接口&#10;- 优化应用生命周期管理方法（启动、关闭、清缓存）&#10;- 改进截图功能实现，简化目录创建逻辑&#10;-重写断言和文本获取方法，提高代码清晰度- 统一元素定位符使用方式，去除适配层- 增强吐司消息检查和操作的相关方法&#10;- 删除未使用的导入和类型注解，精简代码结构- 修正点击元素和输入文本的方法实现&#10;- 提升YAML配置读取的延迟初始化机制&#10;- 优化窗口尺寸获取逻辑，避免缓存带来的潜在问题&#10;- 强化异常处理机制，增加错误打印而非仅记录日志&#10;- 标准化方法文档字符串格式，增强可读性- 移除LRU缓存装饰器及相关私有工具函数&#10;- 重构后确保所有公共方法签名保持兼容性&#10;- 清理冗余代码，如无用的类属性和常量定义&#10;- 整合并优化元素存在性及可见性判断逻辑&#10;- 修复部分方法返回值类型注解不一致问题&#10;- 移除对已删除模块的引用和相关业务逻辑依赖&#10;- 简化坐标点击方法参数，保留核心功能&#10;- 调整页面导航方法实现，提高执行效率&#10;- 去除过时的断言辅助方法，统一测试验证入口&#10;- 修改元素文本匹配和包含检查的具体实现细节&#10;- 改进元素列表查找方法的超时控制逻辑&#10;- 删除不必要的静态方法标记和装饰器模式&#10;- 更新构造函数逻辑，推迟YamlReader实例化时机&#10;- 重新组织类内部结构，提升代码整洁度- 补充缺失的方法文档说明，便于后续维护&#10;- 替换原有定位符转换机制，减少中间步骤&#10;-优化元素点击前的等待条件设置&#10;- 调整输入框文本清除和填充的操作顺序- 移除重复的元素查找封装，合并相似功能- 增强元素显示状态检测的一致性处理- 精简滑动手势计算公式，提升准确性- 统一超时参数默认值设定，方便全局调整&#10;-优化返回键模拟点击次数控制逻辑&#10;-重构元素显隐判断逻辑，增强鲁棒性- 增强跨平台兼容性，适配新版Appium驱动&#10;- 删除遗留调试代码片段和无关注释内容&#10;- 完善异常捕获范围，防止未知错误中断流程&#10;- 调整toast消息定位表达式构建方式&#10;- 简化权限相关操作命令拼接过程&#10;- 优化截图文件路径拼接与存储管理&#10;- 统一元素交互事件触发的时间单位标准&#10;- 提高元素文本提取准确率和稳定性&#10;- 修复部分方法中文档描述与实际不符之处&#10;- 调整类继承体系，剥离非必要混合类支持&#10;-重构后整体降低耦合度，提高扩展灵活性">
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="refactor(login):重构首次登录业务逻辑和测试用例&#10;&#10;-重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责&#10;- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理&#10;- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪">
+      <change afterPath="$PROJECT_DIR$/print.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/First_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/First_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_cases/test_002_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_002_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/login_data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/login_data.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +71,10 @@
     "Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试.executor": "Run",
     "Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试.executor": "Run",
     "Python.First_login.executor": "Run",
-    "Python.Pop_up_login.executor": "Debug",
+    "Python.Pop_up_login.executor": "Run",
     "Python.Tab_create.executor": "Run",
     "Python.conftest.executor": "Debug",
+    "Python.print.executor": "Run",
     "Python.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -373,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762601267290</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="refactor(login):重构首次登录业务逻辑和测试用例&#10;&#10;-重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责&#10;- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理&#10;- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪">
+      <option name="closed" value="true" />
+      <created>1762606698681</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1762606698681</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -400,17 +412,7 @@
     <MESSAGE value="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作&#10;- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑&#10;- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
     <MESSAGE value="feat(test):重构首次登录业务逻辑和测试用例- 重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责&#10;- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作-重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理&#10;- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
     <MESSAGE value="refactor(base_page):重构基础页面类以提升稳定性和可维护性&#10;&#10;- 移除日志模块和空状态混入类的复杂实现&#10;- 简化元素查找与等待机制，移除自定义重试逻辑- 更新滑动方法实现，直接调用驱动程序接口&#10;- 优化应用生命周期管理方法（启动、关闭、清缓存）&#10;- 改进截图功能实现，简化目录创建逻辑&#10;-重写断言和文本获取方法，提高代码清晰度- 统一元素定位符使用方式，去除适配层- 增强吐司消息检查和操作的相关方法&#10;- 删除未使用的导入和类型注解，精简代码结构- 修正点击元素和输入文本的方法实现&#10;- 提升YAML配置读取的延迟初始化机制&#10;- 优化窗口尺寸获取逻辑，避免缓存带来的潜在问题&#10;- 强化异常处理机制，增加错误打印而非仅记录日志&#10;- 标准化方法文档字符串格式，增强可读性- 移除LRU缓存装饰器及相关私有工具函数&#10;- 重构后确保所有公共方法签名保持兼容性&#10;- 清理冗余代码，如无用的类属性和常量定义&#10;- 整合并优化元素存在性及可见性判断逻辑&#10;- 修复部分方法返回值类型注解不一致问题&#10;- 移除对已删除模块的引用和相关业务逻辑依赖&#10;- 简化坐标点击方法参数，保留核心功能&#10;- 调整页面导航方法实现，提高执行效率&#10;- 去除过时的断言辅助方法，统一测试验证入口&#10;- 修改元素文本匹配和包含检查的具体实现细节&#10;- 改进元素列表查找方法的超时控制逻辑&#10;- 删除不必要的静态方法标记和装饰器模式&#10;- 更新构造函数逻辑，推迟YamlReader实例化时机&#10;- 重新组织类内部结构，提升代码整洁度- 补充缺失的方法文档说明，便于后续维护&#10;- 替换原有定位符转换机制，减少中间步骤&#10;-优化元素点击前的等待条件设置&#10;- 调整输入框文本清除和填充的操作顺序- 移除重复的元素查找封装，合并相似功能- 增强元素显示状态检测的一致性处理- 精简滑动手势计算公式，提升准确性- 统一超时参数默认值设定，方便全局调整&#10;-优化返回键模拟点击次数控制逻辑&#10;-重构元素显隐判断逻辑，增强鲁棒性- 增强跨平台兼容性，适配新版Appium驱动&#10;- 删除遗留调试代码片段和无关注释内容&#10;- 完善异常捕获范围，防止未知错误中断流程&#10;- 调整toast消息定位表达式构建方式&#10;- 简化权限相关操作命令拼接过程&#10;- 优化截图文件路径拼接与存储管理&#10;- 统一元素交互事件触发的时间单位标准&#10;- 提高元素文本提取准确率和稳定性&#10;- 修复部分方法中文档描述与实际不符之处&#10;- 调整类继承体系，剥离非必要混合类支持&#10;-重构后整体降低耦合度，提高扩展灵活性" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(base_page):重构基础页面类以提升稳定性和可维护性&#10;&#10;- 移除日志模块和空状态混入类的复杂实现&#10;- 简化元素查找与等待机制，移除自定义重试逻辑- 更新滑动方法实现，直接调用驱动程序接口&#10;- 优化应用生命周期管理方法（启动、关闭、清缓存）&#10;- 改进截图功能实现，简化目录创建逻辑&#10;-重写断言和文本获取方法，提高代码清晰度- 统一元素定位符使用方式，去除适配层- 增强吐司消息检查和操作的相关方法&#10;- 删除未使用的导入和类型注解，精简代码结构- 修正点击元素和输入文本的方法实现&#10;- 提升YAML配置读取的延迟初始化机制&#10;- 优化窗口尺寸获取逻辑，避免缓存带来的潜在问题&#10;- 强化异常处理机制，增加错误打印而非仅记录日志&#10;- 标准化方法文档字符串格式，增强可读性- 移除LRU缓存装饰器及相关私有工具函数&#10;- 重构后确保所有公共方法签名保持兼容性&#10;- 清理冗余代码，如无用的类属性和常量定义&#10;- 整合并优化元素存在性及可见性判断逻辑&#10;- 修复部分方法返回值类型注解不一致问题&#10;- 移除对已删除模块的引用和相关业务逻辑依赖&#10;- 简化坐标点击方法参数，保留核心功能&#10;- 调整页面导航方法实现，提高执行效率&#10;- 去除过时的断言辅助方法，统一测试验证入口&#10;- 修改元素文本匹配和包含检查的具体实现细节&#10;- 改进元素列表查找方法的超时控制逻辑&#10;- 删除不必要的静态方法标记和装饰器模式&#10;- 更新构造函数逻辑，推迟YamlReader实例化时机&#10;- 重新组织类内部结构，提升代码整洁度- 补充缺失的方法文档说明，便于后续维护&#10;- 替换原有定位符转换机制，减少中间步骤&#10;-优化元素点击前的等待条件设置&#10;- 调整输入框文本清除和填充的操作顺序- 移除重复的元素查找封装，合并相似功能- 增强元素显示状态检测的一致性处理- 精简滑动手势计算公式，提升准确性- 统一超时参数默认值设定，方便全局调整&#10;-优化返回键模拟点击次数控制逻辑&#10;-重构元素显隐判断逻辑，增强鲁棒性- 增强跨平台兼容性，适配新版Appium驱动&#10;- 删除遗留调试代码片段和无关注释内容&#10;- 完善异常捕获范围，防止未知错误中断流程&#10;- 调整toast消息定位表达式构建方式&#10;- 简化权限相关操作命令拼接过程&#10;- 优化截图文件路径拼接与存储管理&#10;- 统一元素交互事件触发的时间单位标准&#10;- 提高元素文本提取准确率和稳定性&#10;- 修复部分方法中文档描述与实际不符之处&#10;- 调整类继承体系，剥离非必要混合类支持&#10;-重构后整体降低耦合度，提高扩展灵活性" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/business/First_login.py</url>
-          <line>88</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="refactor(login):重构首次登录业务逻辑和测试用例&#10;&#10;-重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责&#10;- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理&#10;- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(login):重构首次登录业务逻辑和测试用例&#10;&#10;-重命名 FirstUse 类为 FirstLoginBusiness，明确业务逻辑职责&#10;- 新增弹窗登录业务逻辑类 PopUpLoginBusiness，封装微信和手机号登录流程&#10;- 优化登录流程方法，整合启动页、创作页和弹窗登录操作- 重构测试运行脚本 run.py 和 run_parallel.py，增强日志记录和错误处理&#10;- 添加 allure 命令可用性检查，改进报告生成和服务器启动逻辑- 重新设计登录测试用例，覆盖手机登录、微信登录及弹窗显示异常场景&#10;- 改进并行测试执行机制，支持任务超时控制和更详细的执行状态追踪" />
   </component>
 </project>

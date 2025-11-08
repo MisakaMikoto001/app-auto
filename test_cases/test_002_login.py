@@ -1,51 +1,29 @@
-# test_cases/test_002_login.py
 import pytest
-from selenium.common import TimeoutException
+import yaml
+from pathlib import Path
 
 from src.business.First_login import FirstLoginBusiness
 
-# 直接在代码中定义测试数据
-LOGIN_TEST_DATA = {
-    'first_login_phone_data': [
-        {
-            'phone': "134444",
-            'code': "1234",
-            'expected_result': False,
-            'description': "无效手机号（位数不足）"
-        },
-        {
-            'phone': "13444444444",
-            'code': "123",
-            'expected_result': False,
-            'description': "无效验证码（位数不足）"
-        },
-        {
-            'phone': "",
-            'code': "",
-            'expected_result': False,
-            'description': "空手机号和验证码"
-        },
-        {
-            'phone': "13444444444",
-            'code': "1234",
-            'expected_result': True,
-            'description': "有效手机号和验证码"
-        }
-    ]
-}
 
+class TimeoutException(Exception):
+    """自定义超时异常"""
+    pass
 
 @pytest.fixture(scope="module")
 def login_test_data():
     """
-    登录测试数据fixture
+    从YAML文件中读取登录测试数据的fixture
     """
-    return LOGIN_TEST_DATA
+    yaml_path = Path(__file__).parent.parent / "test_data" / "login_data.yaml"
+    with open(yaml_path, "r", encoding="utf-8") as file:
+        data = yaml.safe_load(file)
+    return data["login_test_data"]
 
-def test_first_login_process_with_phone_popup_not_displayed(driver, login_test_data):
+
+@pytest.fixture
+def first_login_business(driver):
     """
-    测试首次手机登录完整流程 - 弹窗未显示场景
-    验证当登录弹窗未显示时的处理
+    FirstLoginBusiness实例fixture
     """
     first_login = FirstLoginBusiness(driver)
 
@@ -53,15 +31,21 @@ def test_first_login_process_with_phone_popup_not_displayed(driver, login_test_d
         first_login.tab_create_page.close_app()
         first_login.tab_create_page.launch_app()
 
+    return first_login
+
+
+def test_first_login_process_with_phone_popup_not_displayed(first_login_business, login_test_data):
+    """
+    测试首次手机登录完整流程 - 弹窗未显示场景
+    验证当登录弹窗未显示时的处理
+    """
     # 从测试数据中获取有效数据
     valid_data = next(item for item in login_test_data['first_login_phone_data']
                       if item['expected_result'] is True)
 
-    # 这里需要mock相关页面对象的方法，使is_popup_displayed返回False
-    # 由于实际测试环境中可能需要特殊设置才能触发此场景，我们暂时跳过此测试
     pytest.skip("需要mock机制来测试弹窗未显示场景")
 
-    result = first_login.first_login_process_with_phone(
+    result = first_login_business.first_login_process_with_phone(
         valid_data['phone'],
         valid_data['code']
     )
@@ -88,54 +72,41 @@ def test_first_login_initialization(driver):
     assert first_login.driver == driver, "driver应该被正确传递"
 
 
-@pytest.mark.parametrize("test_case_data", LOGIN_TEST_DATA['first_login_phone_data'])
-def test_first_login_process_parameterized(driver, test_case_data):
+def test_first_login_process_parameterized(first_login_business, login_test_data):
     """
     参数化测试首次手机登录流程使用不同凭证的场景
+    从YAML文件中读取测试数据
     """
-    first_login = FirstLoginBusiness(driver)
+    # 对每个测试数据运行测试
+    for test_case_data in login_test_data['first_login_phone_data']:
 
-    if first_login.tab_create_page.is_app_running():
-        first_login.tab_create_page.close_app()
-        first_login.tab_create_page.launch_app()
+        result = first_login_business.first_login_process_with_phone(
+            test_case_data['phone'],
+            test_case_data['code']
+        )
 
-    # 注意：这个测试用例的实际结果可能依赖于mock的页面对象行为
-    # 在实际测试环境中，可能需要调整预期结果或mock相关方法
-    result = first_login.first_login_process_with_phone(
-        test_case_data['phone'],
-        test_case_data['code']
-    )
+        expected = test_case_data['expected_result']
+        assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
 
-    expected = test_case_data['expected_result']
-    assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
 
-def test_login_process_with_wechat_success(driver):
+def test_login_process_with_wechat_success(first_login_business):
     """
     测试首次微信登录成功场景
+    从YAML文件中读取测试数据
     """
-    first_login = FirstLoginBusiness(driver)
-
-    if first_login.tab_create_page.is_app_running():
-        first_login.tab_create_page.close_app()
-        first_login.tab_create_page.launch_app()
-
     try:
-        result = first_login.login_process_with_wechat()
+        result = first_login_business.login_process_with_wechat()
         assert isinstance(result, bool), "微信登录应返回布尔值"
     except TimeoutException as e:
         pytest.fail(f"元素定位超时，请检查元素定位符是否正确: {e}")
 
-def test_first_login_process_with_phone_success(driver, login_test_data):
+
+def test_first_login_process_with_phone_success(first_login_business, login_test_data):
     """
     测试首次手机登录完整流程 - 成功场景
     验证使用正确手机号和验证码能够成功完成首次登录流程
+    从YAML文件中读取测试数据
     """
-    first_login = FirstLoginBusiness(driver)
-
-    if first_login.tab_create_page.is_app_running():
-        first_login.tab_create_page.close_app()
-        first_login.tab_create_page.launch_app()
-
     # 从测试数据中获取有效的手机号和验证码
     valid_data = next(item for item in login_test_data['first_login_phone_data']
                       if item['expected_result'] is True)
@@ -143,10 +114,9 @@ def test_first_login_process_with_phone_success(driver, login_test_data):
     if not valid_data:
         pytest.skip("没有有效的测试数据")
 
-    result = first_login.first_login_process_with_phone(
+    result = first_login_business.first_login_process_with_phone(
         valid_data['phone'],
         valid_data['code']
     )
 
     assert result is True, "首次手机登录流程应该成功执行"
-
