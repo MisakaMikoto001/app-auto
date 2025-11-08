@@ -9,9 +9,25 @@ import logging
 from typing import Optional
 
 # 配置日志
+import logging.handlers
+
+# 创建日志目录
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+logs_dir = os.path.join(project_root, "outputs", "logs")
+os.makedirs(logs_dir, exist_ok=True)
+
+# 配置日志格式
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.handlers.RotatingFileHandler(
+            os.path.join(logs_dir, "app_auto.log"),
+            maxBytes=10*1024*1024,  # 10MB
+            backupCount=5
+        )
+    ]
 )
 logger = logging.getLogger(__name__)
 
@@ -52,9 +68,39 @@ def check_allure_installed() -> bool:
         bool: allure 是否可用
     """
     try:
-        result = subprocess.run(["allure", "--version"],
-                                check=True, capture_output=True, text=True)
-        logger.info(f"Allure 版本: {result.stdout.strip()}")
+        # 使用完整的环境变量
+        env = os.environ.copy()
+
+        # 检查 allure 是否在 PATH 中
+        if os.name == 'nt':  # Windows
+            result = subprocess.run(
+                ["where", "allure"],
+                check=True,
+                capture_output=True,
+                text=True,
+                shell=True,
+                env=env
+            )
+        else:  # Unix/Linux/Mac
+            result = subprocess.run(
+                ["which", "allure"],
+                check=True,
+                capture_output=True,
+                text=True,
+                env=env
+            )
+
+        logger.debug(f"找到 allure 路径: {result.stdout.strip()}")
+
+        # 检查版本
+        version_result = subprocess.run(
+            ["allure", "--version"],
+            check=True,
+            capture_output=True,
+            text=True,
+            env=env
+        )
+        logger.info(f"Allure 版本: {version_result.stdout.strip()}")
         return True
     except (subprocess.CalledProcessError, FileNotFoundError) as e:
         logger.warning(f"Allure 命令未安装或不可用: {e}")
@@ -91,6 +137,60 @@ def run_tests(test_cases_dir: str, reports_dir: str) -> int:
         logger.error(f"测试执行失败，返回码: {e.returncode}")
         return e.returncode
 
+# def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
+#     """
+#     生成 Allure 静态报告
+#
+#     Args:
+#         reports_dir (str): 测试报告目录
+#         allure_report_dir (str): 静态报告输出目录
+#
+#     Returns:
+#         bool: 生成是否成功
+#     """
+#     if not check_allure_installed():
+#         logger.info("跳过静态报告生成（Allure 未安装）")
+#         return False
+#
+#     logger.info("正在生成静态HTML报告...")
+#
+#     try:
+#         result = subprocess.run([
+#             "allure", "generate",
+#             reports_dir,
+#             "-o", allure_report_dir,
+#             "--clean"
+#         ], check=True)
+#
+#         logger.info(f"静态HTML报告已生成至 {allure_report_dir}")
+#         return True
+#     except subprocess.CalledProcessError as e:
+#         logger.error(f"报告生成失败: {e}")
+#         return False
+# def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
+#     """
+#     启动 Allure 报告服务器
+#
+#     Args:
+#         allure_report_dir (str): 报告目录
+#
+#     Returns:
+#         Popen: 服务器进程对象
+#     """
+#     if not check_allure_installed():
+#         logger.info("跳过报告服务器启动（Allure 未安装）")
+#         return None
+#
+#     logger.info("正在启动Allure报告服务器...")
+#     logger.info(f"报告地址: file://{os.path.join(os.path.abspath(allure_report_dir), 'index.html')}")
+#
+#     try:
+#         # 使用 Popen 而不是 run，以便我们可以控制进程
+#         process = subprocess.Popen(["allure", "open", allure_report_dir])
+#         return process
+#     except Exception as e:
+#         logger.error(f"启动服务器时出错: {e}")
+#         return None
 
 def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
     """
@@ -103,24 +203,30 @@ def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
     Returns:
         bool: 生成是否成功
     """
-    if not check_allure_installed():
-        logger.info("跳过静态报告生成（Allure 未安装）")
-        return False
+    # 移除 allure 检查
+    # if not check_allure_installed():
+    #     logger.info("跳过静态报告生成（Allure 未安装）")
+    #     return False
 
     logger.info("正在生成静态HTML报告...")
 
     try:
+        # 添加环境变量
+        env = os.environ.copy()
         result = subprocess.run([
             "allure", "generate",
             reports_dir,
             "-o", allure_report_dir,
             "--clean"
-        ], check=True)
+        ], check=True, env=env)
 
         logger.info(f"静态HTML报告已生成至 {allure_report_dir}")
         return True
     except subprocess.CalledProcessError as e:
         logger.error(f"报告生成失败: {e}")
+        return False
+    except FileNotFoundError as e:
+        logger.error(f"Allure 命令未找到: {e}")
         return False
 
 
@@ -134,17 +240,23 @@ def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
     Returns:
         Popen: 服务器进程对象
     """
-    if not check_allure_installed():
-        logger.info("跳过报告服务器启动（Allure 未安装）")
-        return None
+    # 移除 allure 检查
+    # if not check_allure_installed():
+    #     logger.info("跳过报告服务器启动（Allure 未安装）")
+    #     return None
 
     logger.info("正在启动Allure报告服务器...")
     logger.info(f"报告地址: file://{os.path.join(os.path.abspath(allure_report_dir), 'index.html')}")
 
     try:
+        # 添加环境变量
+        env = os.environ.copy()
         # 使用 Popen 而不是 run，以便我们可以控制进程
-        process = subprocess.Popen(["allure", "open", allure_report_dir])
+        process = subprocess.Popen(["allure", "open", allure_report_dir], env=env)
         return process
+    except FileNotFoundError as e:
+        logger.error(f"Allure 命令未找到: {e}")
+        return None
     except Exception as e:
         logger.error(f"启动服务器时出错: {e}")
         return None
@@ -152,6 +264,11 @@ def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
 
 def main():
     global allure_process
+
+    npm_global_path = os.path.expanduser("~/AppData/Roaming/npm")
+    if os.path.exists(npm_global_path) and npm_global_path not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = f"{npm_global_path};{os.environ.get('PATH', '')}"
+
 
     # 注册信号处理器
     signal.signal(signal.SIGINT, signal_handler)
@@ -187,9 +304,9 @@ def main():
     test_return_code =  run_tests(test_cases_dir, reports_dir)
 
     # 检查allure
-    if not check_allure_installed():
-        logger.info("跳过静态报告生成（Allure 未安装）")
-        sys.exit(test_return_code)
+    # if not check_allure_installed():
+    #     logger.info("跳过静态报告生成（Allure 未安装）")
+    #     sys.exit(test_return_code)
 
     # 生成静态HTML报告
     report_generated = False

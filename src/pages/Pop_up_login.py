@@ -12,7 +12,7 @@ class PopUpLoginPage(BasePage):
     POPUP_TITLE = (AppiumBy.ID, "iv_title")
     CLOSE_BUTTON = (AppiumBy.ID, "btnClose")
     WECHAT_LOGIN_BUTTON = (AppiumBy.ID, "btnWechat")
-    TEL_LOGIN_BUTTON = (AppiumBy.ID, "//*[@text='手机登录']")
+    TEL_LOGIN_BUTTON = (AppiumBy.ID, "btnPhone")
     USER_TEL = (AppiumBy.ID, "et_phone")
     USER_CODE = (AppiumBy.ID, "et_verify_code")
     LOGIN_BUTTON = (AppiumBy.ID, "btnLogin")
@@ -67,9 +67,13 @@ class PopUpLoginPage(BasePage):
         """点击登录按钮"""
         self.click_element(self.LOGIN_BUTTON)
 
-    def click_check_box(self):
+    def click_check_box_1(self):
         """点击勾选框"""
         self.click_element(self.CHECK_BOX)
+
+    def click_check_box_2(self):
+        """点击勾选框"""
+        self.click_element(self.AGREEMENT_CHECK)
 
     def click_privacy_policy(self):
         """点击隐私政策"""
@@ -92,7 +96,7 @@ class PopUpLoginPage(BasePage):
         self.click_element(self.CLOSE_BUTTON)
 
 class PopUpLoginWeChatBusiness(PopUpLoginPage):
-    """弹窗登录业务逻辑类"""
+    """弹窗微信登录业务逻辑类"""
     def __init__(self, driver):
         super().__init__(driver)
         self.popup_login_page = PopUpLoginPage(driver)
@@ -101,8 +105,8 @@ class PopUpLoginWeChatBusiness(PopUpLoginPage):
         """微信登录流程"""
         if self.popup_login_page.is_popup_displayed():
             # 点击微信登录
+            self.popup_login_page.click_check_box_1()
             self.popup_login_page.click_login_wechat()
-            self.popup_login_page.click_check_box()
             print("已选择微信登录")
             return True
         else:
@@ -110,7 +114,7 @@ class PopUpLoginWeChatBusiness(PopUpLoginPage):
             return False
 
 class PopUpLoginTelBusiness(PopUpLoginPage):
-    """弹窗登录业务逻辑类"""
+    """弹窗手机登录业务逻辑类"""
     def __init__(self, driver):
         super().__init__(driver)
         self.popup_login_page = PopUpLoginPage(driver)
@@ -129,14 +133,23 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
                 self.popup_login_page.input_user_code(code)
 
                 # 勾选协议
-                self.popup_login_page.click_check_box()
+                self.popup_login_page.click_check_box_2()
 
-            # 点击登录按钮
-            self.popup_login_page.click_login()
+                # 点击登录按钮
+                self.popup_login_page.click_login()
 
             print(f"已使用手机号 {phone} 登录")
             return True
         else:
             print("登录弹窗未显示，无法进行手机号登录")
             return False
+
+    def login_with_flash_test(self):
+        """手机号登录流程"""
+        if self.popup_login_page.is_popup_displayed():
+            # 点击手机号登录
+            self.popup_login_page.click_login_tel()
+
+            # 点确认一键登录
+            self.popup_login_page.click_confirm_popup_agree()
 

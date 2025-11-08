@@ -8,7 +8,7 @@ from src.pages.Pop_up_login import PopUpLoginWeChatBusiness,PopUpLoginTelBusines
 from src.pages.Tab_create import TabCreatePage
 
 
-class FirstLoginBusiness:
+class FirstLoginBusiness():
     """首次登录业务逻辑类"""
 
     def __init__(self, driver):
@@ -35,12 +35,13 @@ class FirstLoginBusiness:
         if self.popup_login_wechat_business.is_popup_title_displayed():
             self.popup_login_wechat_business.login_with_wechat()
             print("登录弹窗已显示并选择微信登录")
+            assert self.popup_login_wechat_business.assert_toast_visible("没有安装微信"), "没有安装微信"
             return True
         else:
             print("登录弹窗未显示")
             return False
 
-    def login_process_with_flash_test(self, phone, code):
+    def login_process_with_flash_test(self):
         """首次闪验登录完整流程"""
         # 1. 启动APP并同意协议进入
         if self.start_page_business.is_agree_button_displayed():
@@ -56,8 +57,8 @@ class FirstLoginBusiness:
 
         # 4. 检查弹窗是否显示
         if self.popup_login_tel_business.is_popup_title_displayed():
-            self.popup_login_tel_business.login_with_phone(phone, code)
-            print("登录弹窗已显示并选择手机号登录")
+            self.popup_login_tel_business.login_with_flash_test()
+            print("登录弹窗已显示并选择手机一键登录登录")
             return True
         else:
             print("登录弹窗未显示")
@@ -80,7 +81,6 @@ class FirstLoginBusiness:
         # 3. 触发登录弹窗
         if  self.tab_create_page.wait_for_element_visible(self.tab_create_page.TAB_MINE):
             self.tab_create_page.click_tab_mine()
-            print(f"TAB_MINE 元素已点击")
         else:
             print("未找到TAB_MINE 元素")
             return False
