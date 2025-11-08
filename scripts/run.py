@@ -134,88 +134,16 @@ def run_tests(test_cases_dir: str, reports_dir: str) -> int:
         logger.error(f"测试执行失败，返回码: {e.returncode}")
         return e.returncode
 
-# def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
-#     """
-#     生成 Allure 静态报告
-#
-#     Args:
-#         reports_dir (str): 测试报告目录
-#         allure_report_dir (str): 静态报告输出目录
-#
-#     Returns:
-#         bool: 生成是否成功
-#     """
-#     if not check_allure_installed():
-#         logger.info("跳过静态报告生成（Allure 未安装）")
-#         return False
-#
-#     logger.info("正在生成静态HTML报告...")
-#
-#     try:
-#         result = subprocess.run([
-#             "allure", "generate",
-#             reports_dir,
-#             "-o", allure_report_dir,
-#             "--clean"
-#         ], check=True)
-#
-#         logger.info(f"静态HTML报告已生成至 {allure_report_dir}")
-#         return True
-#     except subprocess.CalledProcessError as e:
-#         logger.error(f"报告生成失败: {e}")
-#         return False
-# def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
-#     """
-#     启动 Allure 报告服务器
-#
-#     Args:
-#         allure_report_dir (str): 报告目录
-#
-#     Returns:
-#         Popen: 服务器进程对象
-#     """
-#     if not check_allure_installed():
-#         logger.info("跳过报告服务器启动（Allure 未安装）")
-#         return None
-#
-#     logger.info("正在启动Allure报告服务器...")
-#     logger.info(f"报告地址: file://{os.path.join(os.path.abspath(allure_report_dir), 'index.html')}")
-#
-#     try:
-#         # 使用 Popen 而不是 run，以便我们可以控制进程
-#         process = subprocess.Popen(["allure", "open", allure_report_dir])
-#         return process
-#     except Exception as e:
-#         logger.error(f"启动服务器时出错: {e}")
-#         return None
-
 def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
     """
     生成 Allure 静态报告
-
-    Args:
-        reports_dir (str): 测试报告目录
-        allure_report_dir (str): 静态报告输出目录
-
-    Returns:
-        bool: 生成是否成功
     """
-    # 移除 allure 检查
-    # if not check_allure_installed():
-    #     logger.info("跳过静态报告生成（Allure 未安装）")
-    #     return False
-
     logger.info("正在生成静态HTML报告...")
 
     try:
-        # 添加环境变量
-        env = os.environ.copy()
         result = subprocess.run([
-            "allure", "generate",
-            reports_dir,
-            "-o", allure_report_dir,
-            "--clean"
-        ], check=True, env=env)
+            "allure", "generate", reports_dir, "-o", allure_report_dir, "--clean"
+        ], check=True, env=os.environ.copy(), shell=True)
 
         logger.info(f"静态HTML报告已生成至 {allure_report_dir}")
         return True
@@ -226,30 +154,57 @@ def generate_allure_report(reports_dir: str, allure_report_dir: str) -> bool:
         logger.error(f"Allure 命令未找到: {e}")
         return False
 
+# def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
+#     """
+#     启动 Allure 报告服务器
+#     """
+#     logger.info("正在启动Allure报告服务器...")
+#     logger.info(f"报告地址: file://{os.path.join(os.path.abspath(allure_report_dir), 'index.html')}")
+#
+#     try:
+#         # 添加环境变量
+#         env = os.environ.copy()
+#         process = subprocess.Popen(
+#             ["allure", "open", allure_report_dir],
+#             env=env,
+#             shell=True
+#         )
+#         return process
+#     except FileNotFoundError as e:
+#         logger.error(f"Allure 命令未找到: {e}")
+#         return None
+#     except Exception as e:
+#         logger.error(f"启动服务器时出错: {e}")
+#         return None
 
 def start_allure_server(allure_report_dir: str) -> Optional[subprocess.Popen]:
     """
     启动 Allure 报告服务器
-
-    Args:
-        allure_report_dir (str): 报告目录
-
-    Returns:
-        Popen: 服务器进程对象
     """
-    # 移除 allure 检查
-    # if not check_allure_installed():
-    #     logger.info("跳过报告服务器启动（Allure 未安装）")
-    #     return None
-
     logger.info("正在启动Allure报告服务器...")
     logger.info(f"报告地址: file://{os.path.join(os.path.abspath(allure_report_dir), 'index.html')}")
 
     try:
         # 添加环境变量
         env = os.environ.copy()
-        # 使用 Popen 而不是 run，以便我们可以控制进程
-        process = subprocess.Popen(["allure", "open", allure_report_dir], env=env)
+        process = subprocess.Popen(
+            ["allure", "open", allure_report_dir],
+            env=env,
+            shell=True
+        )
+
+        # 等待10秒后自动停止
+        time.sleep(10)
+        if process.poll() is None:  # 检查进程是否仍在运行
+            process.terminate()
+            try:
+                process.wait(timeout=5)
+                logger.info("Allure 服务器已自动停止")
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait()
+                logger.warning("Allure 服务器强制终止")
+
         return process
     except FileNotFoundError as e:
         logger.error(f"Allure 命令未找到: {e}")
