@@ -5,7 +5,6 @@ import argparse
 import sys
 import signal
 from datetime import datetime
-import keyboard
 import threading
 
 print(f"Python 路径: {sys.executable}")

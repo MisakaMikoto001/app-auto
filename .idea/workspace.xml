@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式">
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test):优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12">
+      <change beforePath="$PROJECT_DIR$/.idea/APP_Auto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/APP_Auto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +43,6 @@
     &quot;accountId&quot;: &quot;a1f529cf-748c-496a-a2b0-4afbecb2f649&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -75,28 +74,10 @@
     "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="APP_Auto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13 (APP_Auto)" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
       </set>
     </attachedChunks>
   </component>
@@ -228,47 +209,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762422250099</updated>
     </task>
-    <task id="LOCAL-00016" summary="feat(pages): 增强页面元素交互功能并更新SDK版本&#10;&#10;- 在 base_page.py 中添加 is_element_present 方法用于检查元素是否存在&#10;- 为 Tab_ablility.py 页面增加多个元素点击操作方法-重构 Tab_invite.py 页面，移除旧元素定位器并添加标签页导航方法- 重写 Tab_mine.py 页面元素定位器并扩展多种点击交互功能&#10;- 更新项目配置文件，将 Python SDK 版本从 3.12 升级至 3.13&#10;- 注释掉 run.py 中的调试打印信息&#10;- 清理 test_login.py 中被注释的测试代码&#10;- 更新 IDE 工作区配置以匹配新的 SDK 设置">
+    <task id="LOCAL-00016" summary="feat(test): 添加测试报告生成功能并优化运行脚本&#10;&#10;- 新增 generate_report.py 脚本用于生成 allure 测试报告&#10;- 更新 run.py 脚本以支持更灵活的路径配置和错误处理&#10;- 优化测试报告生成逻辑，支持静态 HTML 报告输出&#10;- 改进项目环境配置，更新 Python SDK 版本至3.12&#10;- 更新 README.md 添加 allure 安装说明和命令行使用指引&#10;- 修复路径硬编码问题，使用动态路径构建提高脚本兼容性">
       <option name="closed" value="true" />
-      <created>1762487496668</created>
+      <created>1762431765087</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1762487496668</updated>
+      <updated>1762431765087</updated>
     </task>
-    <task id="LOCAL-00017" summary="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt">
+    <task id="LOCAL-00017" summary="feat(test):优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12">
       <option name="closed" value="true" />
-      <created>1762497473870</created>
+      <created>1762433788569</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1762497473870</updated>
+      <updated>1762433788569</updated>
     </task>
-    <task id="LOCAL-00018" summary="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13">
-      <option name="closed" value="true" />
-      <created>1762500397776</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1762500397776</updated>
-    </task>
-    <task id="LOCAL-00019" summary="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin&#10;- 实现元素存在性、可见性检查与文本获取方法&#10;- 增加重试机制与窗口尺寸缓存优化滑动性能- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性&#10;-优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置">
-      <option name="closed" value="true" />
-      <created>1762506882220</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1762506882220</updated>
-    </task>
-    <task id="LOCAL-00020" summary="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式">
-      <option name="closed" value="true" />
-      <created>1762508224384</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1762508224384</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -287,11 +244,8 @@
     <MESSAGE value="feat(base_page): 扩展基础页面功能并优化配置读取&#10;&#10;- 添加 YamlReader 集成以支持配置文件读取- 新增元素文本获取与断言方法&#10;- 实现返回操作和应用状态检查功能&#10;- 重构 YAML读取逻辑，支持动态路径和缓存控制&#10;- 更新设备配置文件，注释掉部分不使用的设备配置&#10;- 修改启动页元素定位及交互逻辑- 添加应用程序退出测试用例&#10;- 升级项目 Python SDK 版本至 3.12" />
     <MESSAGE value="feat(base_page): 增加坐标点击功能并优化截图保存路径- 新增 tap_coordinates 方法支持指定坐标点击- 截图功能自动创建 outputs/screenshots 目录&#10;-优化 YAML 文件路径解析逻辑&#10;- 更新测试用例中的元素交互方式&#10;- 升级项目 Python SDK 版本至 3.13" />
     <MESSAGE value="feat(login): 实现弹窗登录功能并添加相关测试用例&#10;&#10;- 新增登录业务流程类处理完整登录逻辑&#10;- 扩展基础页面类增加元素可见性判断和吐司断言方法&#10;- 更新弹窗登录页面元素定位和交互方法&#10;- 添加 Pixel 6 设备配置信息- 创建弹窗登录测试用例覆盖多种登录场景&#10;- 实现微信登录和退出登录功能- 优化页面元素检查和弹窗状态判断逻辑" />
-    <MESSAGE value="feat(pages): 增强页面元素交互功能并更新SDK版本&#10;&#10;- 在 base_page.py 中添加 is_element_present 方法用于检查元素是否存在&#10;- 为 Tab_ablility.py 页面增加多个元素点击操作方法-重构 Tab_invite.py 页面，移除旧元素定位器并添加标签页导航方法- 重写 Tab_mine.py 页面元素定位器并扩展多种点击交互功能&#10;- 更新项目配置文件，将 Python SDK 版本从 3.12 升级至 3.13&#10;- 注释掉 run.py 中的调试打印信息&#10;- 清理 test_login.py 中被注释的测试代码&#10;- 更新 IDE 工作区配置以匹配新的 SDK 设置" />
-    <MESSAGE value="feat(run): 增强Allure报告生成和服务器管理功能&#10;&#10;- 添加信号处理机制，支持优雅关闭Allure服务器&#10;- 实现全局进程引用管理和线程安全锁&#10;- 集成键盘事件监听，支持ESC键快速退出&#10;- 优化报告生成流程，增加异常处理和用户提示&#10;- 注释掉旧的手动报告打开逻辑&#10;- 添加Allure命令行工具安装提示到requirements.txt" />
-    <MESSAGE value="feat(base_page): 添加空状态处理混入类&#10;&#10;- 新增 EmptyStateMixin 类处理空状态和断网状态&#10;- 实现空状态图标、文本和重试按钮的元素定位&#10;- 添加检查空状态显示、获取提示文本和点击重试按钮方法&#10;- BasePage 类继承 EmptyStateMixin 获得空状态处理能力&#10;-优化页面元素交互功能并更新SDK版本至3.13" />
-    <MESSAGE value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin&#10;- 实现元素存在性、可见性检查与文本获取方法&#10;- 增加重试机制与窗口尺寸缓存优化滑动性能- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性&#10;-优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置" />
-    <MESSAGE value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(base_page):优化页面基类并增强元素交互功能&#10;&#10;- 添加空状态处理混入类 EmptyStateMixin- 实现元素存在性、可见性检查与文本获取方法- 增加重试机制与窗口尺寸缓存优化滑动性能&#10;- 统一 WebDriverWait 实例减少资源消耗&#10;- 引入类型注解提升代码可维护性- 优化 YAML 配置读取逻辑与异常处理&#10;- 增强日志记录与截图功能便于调试- 改进应用生命周期管理方法如启动、关闭和清缓存- 更新 Python SDK 版本至 3.13 并调整兼容设置&#10;- 修复截图路径逻辑并使用绝对路径存储截图&#10;-为应用状态检查方法添加异常抑制注解&#10;-优化测试用例中的元素查找与调试信息输出格式" />
+    <MESSAGE value="feat(test): 添加测试报告生成功能并优化运行脚本&#10;&#10;- 新增 generate_report.py 脚本用于生成 allure 测试报告&#10;- 更新 run.py 脚本以支持更灵活的路径配置和错误处理&#10;- 优化测试报告生成逻辑，支持静态 HTML 报告输出&#10;- 改进项目环境配置，更新 Python SDK 版本至3.12&#10;- 更新 README.md 添加 allure 安装说明和命令行使用指引&#10;- 修复路径硬编码问题，使用动态路径构建提高脚本兼容性" />
+    <MESSAGE value="feat(test):优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(test):优化测试运行脚本并增强报告生成功能&#10;&#10;- 在 run.py 中添加系统路径和 Python 环境信息打印&#10;-为 allure 命令调用添加 shell=True 参数以提升兼容性- 实现 Ctrl+C信号处理，支持优雅退出&#10;- 注释掉 test_login.py 中的全部测试用例代码&#10;- 更新 IDE 工作区配置和 SDK 版本至 3.12" />
   </component>
 </project>
