@@ -7,8 +7,9 @@
     <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(login): 增加吐司消息文本获取方法并优化登录测试用例&#10;&#10;- 在 base_page.py 中新增 get_toast_text 方法用于获取吐司消息文本&#10;- 更新 FirstLoginBusiness 类继承关系并调用父类初始化方法- 扩展 login_data.yaml 测试数据，添加吐司消息预期值字段&#10;- 修改 test_002_login.py，增强参数化测试用例的吐司消息断言逻辑&#10;- 注释掉旧版测试方法，启用新版带吐司验证的测试流程">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/First_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/First_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_cases/test_002_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_002_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -406,7 +407,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762615989642</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="feat(login): 增加吐司消息文本获取方法并优化登录测试用例&#10;&#10;- 在 base_page.py 中新增 get_toast_text 方法用于获取吐司消息文本&#10;- 更新 FirstLoginBusiness 类继承关系并调用父类初始化方法- 扩展 login_data.yaml 测试数据，添加吐司消息预期值字段&#10;- 修改 test_002_login.py，增强参数化测试用例的吐司消息断言逻辑&#10;- 注释掉旧版测试方法，启用新版带吐司验证的测试流程">
+      <option name="closed" value="true" />
+      <created>1762653177994</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1762653177994</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

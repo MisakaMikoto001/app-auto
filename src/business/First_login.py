@@ -66,7 +66,7 @@ class FirstLoginBusiness(StartPageBusiness, TabCreatePage, PopUpLoginWeChatBusin
         self.popup_login_tel_business.click_confirm_popup_agree()
         return self.popup_login_tel_business.is_confirm_popup_displayed()
 
-    def first_login_process_with_phone(self,phone, code):
+    def first_login_process_with_phone(self, phone, code):
         """首次手机登录完整流程"""
         # 1. 启动APP并同意协议进入
         if self.start_page_business.is_agree_button_displayed():
@@ -76,7 +76,7 @@ class FirstLoginBusiness(StartPageBusiness, TabCreatePage, PopUpLoginWeChatBusin
         self.tab_create_page.navigate_to_create()
 
         # 3. 触发登录弹窗
-        if  self.tab_create_page.wait_for_element_visible(self.tab_create_page.TAB_MINE):
+        if self.tab_create_page.wait_for_element_visible(self.tab_create_page.TAB_MINE):
             self.tab_create_page.click_tab_mine()
         else:
             print("未找到TAB_MINE 元素")
@@ -84,8 +84,7 @@ class FirstLoginBusiness(StartPageBusiness, TabCreatePage, PopUpLoginWeChatBusin
 
         # 4. 检查弹窗是否显示
         if self.popup_login_wechat_business.is_popup_title_displayed():
-            self.popup_login_tel_business.login_with_phone(phone, code)
-            return True
+            return self.popup_login_tel_business.login_with_phone(phone, code)
         else:
             print("first_login_process_with_phone：登录弹窗未显示")
             return False

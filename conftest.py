@@ -244,6 +244,8 @@ def screenshot_on_failure(request, driver):
 
         # 保存截图
         try:
+            driver.get_screenshot_as_file(screenshot_path)
+
             if sys.platform.startswith('win'):
                 os.system(f"dir > nul")  # Windows刷新
 

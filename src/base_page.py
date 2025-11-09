@@ -137,6 +137,25 @@ class BasePage(EmptyStateMixin):
         except TimeoutException:
             return False
 
+    def assert_toast(self, expected_text, timeout=10):
+        """优化的Toast断言方法"""
+        try:
+            # 使用XPath模糊匹配，提高成功率
+            toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
+
+            # 显式等待，轮询频率设为0.1秒
+            toast_element = WebDriverWait(self.driver, timeout, 0.1).until(
+                EC.presence_of_element_located(toast_locator)
+            )
+            print(f"✅ Toast捕获成功: {toast_element.text}")
+            return True
+
+        except Exception as e:
+            print(f"❌ Toast捕获失败: {str(e)}")
+            # 失败后截图+日志分析
+            self.take_screenshot("toast_failure.png")
+            return False
+
     def assert_element_present(self, locator, timeout=10, message="Element is not present"):
         """断言元素存在"""
         try:
@@ -201,43 +220,64 @@ class BasePage(EmptyStateMixin):
         if message is None:
             message = f"吐司消息未显示或不包含文本: '{expected_text}'"
 
-        try:
-            # 等待吐司元素出现
-            toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
-            element = WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located(toast_locator)
-            )
-            # 验证元素文本包含预期内容
-            actual_text = element.text
-            if expected_text not in actual_text:
-                raise AssertionError(f"{message}. 实际文本: '{actual_text}'")
-            return True
-        except TimeoutException:
-            raise AssertionError(message)
+        # 尝试多种定位策略
+        strategies = [
+            f"//*[contains(@text,'{expected_text}')]",
+            f"//android.widget.Toast[contains(@text,'{expected_text}')]",
+            f"//*[@class='android.widget.Toast' and contains(@text,'{expected_text}')]",
+            f"//*[contains(@resource-id,'toast') and contains(@text,'{expected_text}')]",
+            f"//*[@text='{expected_text}']"
+        ]
 
-    def is_toast_displayed(self, expected_text, timeout=5):
+        for strategy in strategies:
+            try:
+                toast_locator = (AppiumBy.XPATH, strategy)
+                element = WebDriverWait(self.driver, timeout / len(strategies), 0.1).until(
+                    EC.presence_of_element_located(toast_locator)
+                )
+                # 验证元素文本包含预期内容
+                actual_text = element.text
+                if expected_text not in actual_text:
+                    continue  # 继续尝试其他策略
+                return True
+            except TimeoutException:
+                continue
+
+        raise AssertionError(message)
+
+    def is_toast_displayed(self, expected_text, timeout=10):
         """
-        检查吐司消息是否显示
+        检查吐司消息是否显示，增加多种定位策略
 
         Args:
             expected_text (str): 期望的吐司文本
-            timeout (int): 等待超时时间，默认为5秒
+            timeout (int): 等待超时时间，默认为10秒
 
         Returns:
             bool: 吐司显示且包含预期文本返回True，否则返回False
         """
-        try:
-            toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
-            WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located(toast_locator)
-            )
-            return True
-        except TimeoutException:
-            return False
+        # 尝试多种定位策略
+        strategies = [
+            f"//*[contains(@text,'{expected_text}')]",
+            f"//android.widget.Toast[contains(@text,'{expected_text}')]",
+            f"//*[@class='android.widget.Toast' and contains(@text,'{expected_text}')]",
+            f"//*[contains(@resource-id,'toast') and contains(@text,'{expected_text}')]"
+        ]
+
+        for strategy in strategies:
+            try:
+                toast_locator = (AppiumBy.XPATH, strategy)
+                WebDriverWait(self.driver, timeout / len(strategies), 0.1).until(
+                    EC.presence_of_element_located(toast_locator)
+                )
+                return True
+            except TimeoutException:
+                continue
+        return False
 
     def get_toast_text(self, expected_text=None, timeout=5):
         """
-        获取吐司消息的文本
+        获取吐司消息的文本，优化定位策略
 
         Args:
             expected_text (str, optional): 期望的吐司文本，用于定位特定toast
@@ -246,23 +286,27 @@ class BasePage(EmptyStateMixin):
         Returns:
             str: 吐司消息的文本内容，如果未找到则返回None
         """
-        try:
-            if expected_text:
-                # 定位包含特定文本的toast元素
-                toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
-            else:
-                # 定位任意toast元素（根据常见的toast特征）
-                toast_locator = (AppiumBy.XPATH, "//*[contains(@class,'Toast') or contains(@resource-id,'toast')]")
+        # 优化的定位策略列表
+        strategies = [
+            "//android.widget.Toast" if not expected_text else f"//android.widget.Toast[contains(@text,'{expected_text}')]",
+            "//*[contains(@class,'Toast')]" if not expected_text else f"//*[contains(@class,'Toast') and contains(@text,'{expected_text}')]",
+            "//*[@resource-id='toast']" if not expected_text else f"//*[contains(@resource-id,'toast') and contains(@text,'{expected_text}')]",
+            f"//*[contains(@text,'{expected_text}')]" if expected_text else "//*[@class and @text]"
+        ]
 
-            element = WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_element_located(toast_locator)
-            )
-            return element.text
-        except TimeoutException:
-            return None
-        except Exception as e:
-            print(f"获取toast文本时发生错误: {e}")
-            return None
+        for strategy in strategies:
+            try:
+                toast_locator = (AppiumBy.XPATH, strategy)
+                element = WebDriverWait(self.driver, timeout / len(strategies), 0.1).until(
+                    EC.presence_of_element_located(toast_locator)
+                )
+                return element.text
+            except TimeoutException:
+                continue
+            except Exception as e:
+                print(f"获取toast文本时发生错误: {e}")
+                continue
+        return None
 
     def take_screenshot(self, filename):
         """截图并保存到指定路径"""

@@ -130,8 +130,41 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
         """验证验证码格式是否正确(4位数字)"""
         pattern = r'^\d{4}$'
         return bool(re.match(pattern, code))
-
-
+    #
+    # def login_with_phone(self,phone, code):
+    #     """手机号登录流程"""
+    #     if self.popup_login_page.is_popup_displayed():
+    #         # 点击手机号登录
+    #         self.popup_login_page.click_login_tel()
+    #
+    #         # 输入手机号
+    #         if self.popup_login_page.is_popup_tel_displayed():
+    #             self.popup_login_page.input_user_tel(phone)
+    #
+    #             # 输入验证码
+    #             self.popup_login_page.input_user_code(code)
+    #
+    #             # 勾选协议
+    #             self.popup_login_page.click_check_box_2()
+    #
+    #             # 验证手机号、验证码、并登录
+    #             if phone and self.validate_phone_format(phone):
+    #                 if code and self.validate_verification_code(code):
+    #                     self.popup_login_page.click_login()
+    #                     print(f"已使用手机号 {phone} 验证码 {code}登录")
+    #                     return True
+    #                 else:
+    #                     print(f"验证码格式错误 {code}")
+    #                     return False
+    #             else:
+    #                 print(f"手机号格式错误 {phone}")
+    #                 return False
+    #         else:
+    #             print("手机号登录弹窗未显示")
+    #             return False
+    #     else:
+    #         print("登录弹窗未显示，无法进行手机号登录")
+    #         return False
     def login_with_phone(self, phone, code):
         """手机号登录流程"""
         if self.popup_login_page.is_popup_displayed():
@@ -148,16 +181,25 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
                 # 勾选协议
                 self.popup_login_page.click_check_box_2()
 
-                # 点击登录按钮
+                # 验证手机号、验证码、并登录
                 if phone and self.validate_phone_format(phone):
                     if code and self.validate_verification_code(code):
                         self.popup_login_page.click_login()
-                        print(f"已使用手机号 {phone} 登录")
+                        print(f"已使用手机号 {phone} 验证码 {code}登录")
+                        return True
                     else:
-                        print("验证码格式错误")
+                        print(f"验证码格式错误 {code}")
+                        # 验证码格式错误时应该显示相应吐司
+                        self.assert_toast_visible("请输入正确的验证码")
+                        return False
                 else:
-                    print("手机号格式错误")
-            return True
+                    print(f"手机号格式错误 {phone}")
+                    # 手机号格式错误时应该显示相应吐司
+                    self.assert_toast_visible("请输入正确的手机号")
+                    return False
+            else:
+                print("手机号登录弹窗未显示")
+                return False
         else:
             print("登录弹窗未显示，无法进行手机号登录")
             return False
@@ -170,4 +212,9 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
 
             # 点确认一键登录
             self.popup_login_page.click_confirm_popup_agree()
+            return True
+        else:
+            print("登录弹窗未显示，无法进行一键登录")
+            return False
+
 

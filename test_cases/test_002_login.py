@@ -91,6 +91,37 @@ def test_first_login_initialization(driver):
 #         expected = test_case_data['expected_result']
 #         assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
 
+# def test_first_login_process_parameterized(first_login_business, login_test_data):
+#     """
+#     参数化测试首次手机登录流程使用不同凭证的场景
+#     从YAML文件中读取测试数据
+#     """
+#     # 对每个测试数据运行测试
+#     for test_case_data in login_test_data['first_login_phone_data']:
+#
+#         result = first_login_business.first_login_process_with_phone(
+#             test_case_data['phone'],
+#             test_case_data['code']
+#         )
+#
+#         # 验证结果,包含手机号、验证码、提示信息
+#         expected = test_case_data['expected_result']
+#         assert result == expected, f"测试用例 '{test_case_data['description']}' 失败: 期望 {expected}, 实际 {result}"
+#
+#         if 'toast' in test_case_data:
+#             # 检查toast是否显示
+#             is_displayed = first_login_business.is_toast_displayed(test_case_data['toast'])
+#             assert is_displayed, f"测试用例 '{test_case_data['description']}' toast未显示: 期望显示 '{test_case_data['toast']}'"
+#
+#             toast_text = first_login_business.get_toast_text()
+#             assert test_case_data[
+#                        'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
+#         else:
+#             # 如果不需要验证toast文本内容，使用旧方法
+#             toast_text = first_login_business.get_toast_text()
+#             assert test_case_data[
+#                        'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
+
 def test_first_login_process_parameterized(first_login_business, login_test_data):
     """
     参数化测试首次手机登录流程使用不同凭证的场景
@@ -108,20 +139,18 @@ def test_first_login_process_parameterized(first_login_business, login_test_data
         expected = test_case_data['expected_result']
         assert result == expected, f"测试用例 '{test_case_data['description']}' 失败: 期望 {expected}, 实际 {result}"
 
-        if 'toast' in test_case_data:
-            # 检查toast是否显示
-            is_displayed = first_login_business.is_toast_displayed(test_case_data['toast'])
+        # 优化吐司断言逻辑
+        if 'toast' in test_case_data and test_case_data['toast']:
+            # 使用更稳定的吐司检查方法
+            is_displayed = first_login_business.is_toast_displayed(test_case_data['toast'], timeout=10)
             assert is_displayed, f"测试用例 '{test_case_data['description']}' toast未显示: 期望显示 '{test_case_data['toast']}'"
 
-            # 如果需要验证toast文本内容，使用新添加的get_toast_text方法
-            toast_text = first_login_business.get_toast_text()
+            # 获取实际显示的吐司文本进行验证
+            toast_text = first_login_business.get_toast_text(timeout=10)
+            assert toast_text is not None, f"测试用例 '{test_case_data['description']}' 无法获取toast文本"
             assert test_case_data[
                        'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
-        else:
-            # 如果不需要验证toast文本内容，使用旧方法
-            toast_text = first_login_business.get_toast_text()
-            assert test_case_data[
-                       'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
+
 
 def test_login_process_with_wechat_success(first_login_business):
     """
