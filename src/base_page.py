@@ -235,9 +235,34 @@ class BasePage(EmptyStateMixin):
         except TimeoutException:
             return False
 
-    def get_toast_text(self, expected_text,timeout=5):
-        """获取吐司消息的文本"""
+    def get_toast_text(self, expected_text=None, timeout=5):
+        """
+        获取吐司消息的文本
 
+        Args:
+            expected_text (str, optional): 期望的吐司文本，用于定位特定toast
+            timeout (int): 等待超时时间，默认为5秒
+
+        Returns:
+            str: 吐司消息的文本内容，如果未找到则返回None
+        """
+        try:
+            if expected_text:
+                # 定位包含特定文本的toast元素
+                toast_locator = (AppiumBy.XPATH, f"//*[contains(@text,'{expected_text}')]")
+            else:
+                # 定位任意toast元素（根据常见的toast特征）
+                toast_locator = (AppiumBy.XPATH, "//*[contains(@class,'Toast') or contains(@resource-id,'toast')]")
+
+            element = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(toast_locator)
+            )
+            return element.text
+        except TimeoutException:
+            return None
+        except Exception as e:
+            print(f"获取toast文本时发生错误: {e}")
+            return None
 
     def take_screenshot(self, filename):
         """截图并保存到指定路径"""

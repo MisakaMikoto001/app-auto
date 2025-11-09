@@ -1,5 +1,8 @@
 import pytest
 import yaml
+import logging
+import allure
+import traceback
 from pathlib import Path
 
 from src.business.First_login import FirstLoginBusiness
@@ -103,12 +106,22 @@ def test_first_login_process_parameterized(first_login_business, login_test_data
 
         # 验证结果,包含手机号、验证码、提示信息
         expected = test_case_data['expected_result']
-        assert result is expected, f"测试用例 '{test_case_data['description']}' 失败"
-        if 'toast' in test_case_data:
-            actual_toast = first_login_business.is_toast_displayed(test_case_data['toast'])
-            assert actual_toast == test_case_data[
-                'toast'], f"测试用例 '{test_case_data['description']}' toast断言失败: 期望 '{test_case_data['toast']}', 实际 '{actual_toast}'"
+        assert result == expected, f"测试用例 '{test_case_data['description']}' 失败: 期望 {expected}, 实际 {result}"
 
+        if 'toast' in test_case_data:
+            # 检查toast是否显示
+            is_displayed = first_login_business.is_toast_displayed(test_case_data['toast'])
+            assert is_displayed, f"测试用例 '{test_case_data['description']}' toast未显示: 期望显示 '{test_case_data['toast']}'"
+
+            # 如果需要验证toast文本内容，使用新添加的get_toast_text方法
+            toast_text = first_login_business.get_toast_text()
+            assert test_case_data[
+                       'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
+        else:
+            # 如果不需要验证toast文本内容，使用旧方法
+            toast_text = first_login_business.get_toast_text()
+            assert test_case_data[
+                       'toast'] in toast_text, f"测试用例 '{test_case_data['description']}' toast文本不匹配: 期望 '{test_case_data['toast']}', 实际 '{toast_text}'"
 
 def test_login_process_with_wechat_success(first_login_business):
     """
