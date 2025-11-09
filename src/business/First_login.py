@@ -99,7 +99,6 @@ class FirstLoginBusiness(StartPageBusiness, TabCreatePage, PopUpLoginWeChatBusin
         self.tab_create_page.navigate_to_create()
 
         # 3. 触发登录弹窗
-        # self.tab_create_page.click_one_click_creation()
         self.tab_create_page.click_tab_mine()
 
         # 4. 检查弹窗是否显示

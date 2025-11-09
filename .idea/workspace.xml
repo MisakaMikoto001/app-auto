@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;-优化多种Toast定位策略，增加多XPath匹配规则- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性&#10;- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验">
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/print.py" beforeDir="false" afterPath="$PROJECT_DIR$/print.py" afterDir="false" />
+    <list default="true" id="abe91182-f4e9-490d-962a-ded313124033" name="更改" comment="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;- 优化多种Toast定位策略，增加多XPath匹配规则&#10;- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/First_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/First_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Pop_up_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Pop_up_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/test_002_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/test_002_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,36 +55,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python 测试.Python 测试 (Start.py 内).executor": "Run",
-    "Python 测试.Python 测试 (run.py 内).executor": "Debug",
-    "Python 测试.Python 测试 (test_001_start_page.py 内).executor": "Run",
-    "Python 测试.Python 测试 (test_002_login.py 内).executor": "Run",
-    "Python 测试.Python 测试 (test_start_page.py 内).executor": "Debug",
-    "Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试.executor": "Run",
-    "Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试.executor": "Run",
-    "Python.First_login.executor": "Run",
-    "Python.Pop_up_login.executor": "Run",
-    "Python.Tab_create.executor": "Run",
-    "Python.conftest.executor": "Debug",
-    "Python.print.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/project/APP_Auto/app-auto",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python 测试.Python 测试 (Start.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python 测试 (run.py 内).executor&quot;: &quot;Debug&quot;,
+    &quot;Python 测试.Python 测试 (test_001_start_page.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python 测试 (test_002_login.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python 测试 (test_start_page.py 内).executor&quot;: &quot;Debug&quot;,
+    &quot;Python 测试.test_cases.test_001_start_page.test_click_privacy_policy 的 Python 测试.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.test_cases.test_001_start_page.test_click_user_agreement 的 Python 测试.executor&quot;: &quot;Run&quot;,
+    &quot;Python.First_login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Pop_up_login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tab_create.executor&quot;: &quot;Run&quot;,
+    &quot;Python.conftest.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.print.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\崽\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/APP_Auto/app-auto&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Python.run">
     <configuration name="Tab_create" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APP_Auto" />
       <option name="ENV_FILES" value="" />
@@ -419,11 +421,18 @@
       <option name="project" value="LOCAL" />
       <updated>1762658500888</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;- 优化多种Toast定位策略，增加多XPath匹配规则&#10;- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验">
+      <option name="closed" value="true" />
+      <created>1762658695777</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1762658695777</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chore(project): 初始化项目配置文件&#10;&#10;- 添加 .idea/misc.xml 配置 Python SDK&#10;- 创建 config/caps.yaml 和 config/env.yml 配置文件&#10;- 新增 src/base_page.py 基础页面类- 添加 src/pages/__init__.py 包初始化文件&#10;- 更新 workspace.xml 支持 Python 脚本模板- 设置项目级 VCS 确认选项&#10;- 配置 Git 分支占位符为 main&#10;- 启用项目配置文件共享功能&#10;- 添加 config/devices.yaml 设备配置文件&#10;- 配置 Git 推送标签模式为 --tags&#10;- 添加 README.md 说明项目结构与运行方式" />
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py&#10;- 添加 WDA 构建脚本 scripts/wda_build.sh- 更新 workspace.xml 记录新增文件变更和配置调整" />
     <MESSAGE value="chore(project): 添加测试配置和运行脚本&#10;&#10;- 新增 pytest 配置文件 pytest.ini，配置测试路径和标记- 添加 requirements.txt 依赖文件，包含 Appium、pytest 等依赖&#10;- 创建 scripts/run.py 脚本，支持设备和 APK 参数运行测试&#10;- 新增并行运行脚本 scripts/run_parallel.py- 添加 WDA 构建脚本 scripts/wda_build.sh&#10;- 更新 workspace.xml 记录新增文件变更和配置调整&#10;- 新增 YAML 文件读取工具类 src/common/yaml_reader.py&#10;- 添加多个页面对象文件，包括 Creat_inspired_creation_first.py 等" />
     <MESSAGE value="chore(project): 新增多个页面对象文件和配置更新&#10;&#10;- 添加 Pop_up_dubbing.py 页面文件&#10;- 新增 Pop_up_baby_information.py 页面文件- 新增 Pop_up_payment.py 页面文件- 新增 Print_publicity.py 页面文件&#10;- 新增 Print_the_address.py 页面文件&#10;- 新增 Print_the_order_details.py 页面文件&#10;- 更新 My_order.py 为 My_print.py&#10;- 完善项目测试配置和运行脚本- 新增 YAML 文件读取工具类 yaml_reader.py" />
@@ -448,6 +457,7 @@
     <MESSAGE value="refactor(login):优化首次登录流程和弹窗处理逻辑- 移除调试打印语句，统一错误提示信息格式&#10;- 更新弹窗未显示时的日志输出内容&#10;-修正 tab_mine 触发登录弹窗的点击逻辑&#10;- 完善 allure 报告生成和服务器启动逻辑- 添加环境变量输出脚本用于调试&#10;- 调整 pop_up_phone_closes 方法中的页面操作步骤" />
     <MESSAGE value="feat(login): 增加吐司消息文本获取方法并优化登录测试用例&#10;&#10;- 在 base_page.py 中新增 get_toast_text 方法用于获取吐司消息文本&#10;- 更新 FirstLoginBusiness 类继承关系并调用父类初始化方法- 扩展 login_data.yaml 测试数据，添加吐司消息预期值字段&#10;- 修改 test_002_login.py，增强参数化测试用例的吐司消息断言逻辑&#10;- 注释掉旧版测试方法，启用新版带吐司验证的测试流程" />
     <MESSAGE value="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;-优化多种Toast定位策略，增加多XPath匹配规则- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性&#10;- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;-优化多种Toast定位策略，增加多XPath匹配规则- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性&#10;- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验" />
+    <MESSAGE value="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;- 优化多种Toast定位策略，增加多XPath匹配规则&#10;- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(test):优化Toast断言与登录流程测试&#10;&#10;- 新增assert_toast方法，提升Toast捕获成功率&#10;- 优化多种Toast定位策略，增加多XPath匹配规则&#10;- 调整登录流程测试用例，强化Toast文本验证逻辑&#10;- 修复手机号登录弹窗判断逻辑，提升测试稳定性- 增加验证码与手机号格式错误时的Toast提示验证&#10;- 更新测试数据结构，支持参数化Toast期望值校验" />
   </component>
 </project>

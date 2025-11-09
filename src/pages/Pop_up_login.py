@@ -6,6 +6,10 @@
 from src.base_page import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 import re
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 class PopUpLoginPage(BasePage):
     # 页面元素定位器
@@ -26,6 +30,7 @@ class PopUpLoginPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self.logger = logging.getLogger(self.__class__.__name__)
 
     def is_popup_title_displayed(self):
         """检查弹窗标题是否显示"""
@@ -103,11 +108,23 @@ class PopUpLoginWeChatBusiness(PopUpLoginPage):
 
     def login_with_wechat(self):
         """微信登录流程"""
+        self.logger.info("开始进行微信登录")
         if self.popup_login_page.is_popup_displayed():
             # 点击微信登录
             self.popup_login_page.click_check_box_1()
             self.popup_login_page.click_login_wechat()
-            print("已选择微信登录")
+            self.logger.info("已进行微信登录")
+            return True
+        else:
+            self.logger.error("登录弹窗未显示，无法进行微信登录")
+            return False
+
+    def login_with_wechat_close(self):
+        """关闭微信登录弹窗"""
+        if self.popup_login_page.is_popup_displayed():
+            self.popup_login_page.close_popup()
+            assert self.popup_login_page.is_popup_closed(), "弹窗未关闭"
+
             return True
         else:
             print("登录弹窗未显示，无法进行微信登录")
@@ -130,43 +147,10 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
         """验证验证码格式是否正确(4位数字)"""
         pattern = r'^\d{4}$'
         return bool(re.match(pattern, code))
-    #
-    # def login_with_phone(self,phone, code):
-    #     """手机号登录流程"""
-    #     if self.popup_login_page.is_popup_displayed():
-    #         # 点击手机号登录
-    #         self.popup_login_page.click_login_tel()
-    #
-    #         # 输入手机号
-    #         if self.popup_login_page.is_popup_tel_displayed():
-    #             self.popup_login_page.input_user_tel(phone)
-    #
-    #             # 输入验证码
-    #             self.popup_login_page.input_user_code(code)
-    #
-    #             # 勾选协议
-    #             self.popup_login_page.click_check_box_2()
-    #
-    #             # 验证手机号、验证码、并登录
-    #             if phone and self.validate_phone_format(phone):
-    #                 if code and self.validate_verification_code(code):
-    #                     self.popup_login_page.click_login()
-    #                     print(f"已使用手机号 {phone} 验证码 {code}登录")
-    #                     return True
-    #                 else:
-    #                     print(f"验证码格式错误 {code}")
-    #                     return False
-    #             else:
-    #                 print(f"手机号格式错误 {phone}")
-    #                 return False
-    #         else:
-    #             print("手机号登录弹窗未显示")
-    #             return False
-    #     else:
-    #         print("登录弹窗未显示，无法进行手机号登录")
-    #         return False
+
     def login_with_phone(self, phone, code):
         """手机号登录流程"""
+        self.logger.info("开始进行手机号登录")
         if self.popup_login_page.is_popup_displayed():
             # 点击手机号登录
             self.popup_login_page.click_login_tel()
@@ -185,36 +169,73 @@ class PopUpLoginTelBusiness(PopUpLoginPage):
                 if phone and self.validate_phone_format(phone):
                     if code and self.validate_verification_code(code):
                         self.popup_login_page.click_login()
-                        print(f"已使用手机号 {phone} 验证码 {code}登录")
+                        self.logger.info(f"已使用手机号 {phone} 验证码 {code}登录")
                         return True
                     else:
-                        print(f"验证码格式错误 {code}")
-                        # 验证码格式错误时应该显示相应吐司
                         self.assert_toast_visible("请输入正确的验证码")
+                        self.logger.error(f"验证码格式错误{code}")
                         return False
                 else:
-                    print(f"手机号格式错误 {phone}")
-                    # 手机号格式错误时应该显示相应吐司
                     self.assert_toast_visible("请输入正确的手机号")
+                    self.logger.error(f"手机号格式错误{phone}")
                     return False
             else:
-                print("手机号登录弹窗未显示")
+                self.logger.error("手机登录弹窗未显示")
                 return False
         else:
-            print("登录弹窗未显示，无法进行手机号登录")
+            self.logger.error("登录弹窗未显示，无法进行手机号登录")
             return False
 
     def login_with_flash_test(self):
-        """手机号登录流程"""
+        """手机号一键登录登录流程"""
+        self.logger.info("开始执行手机号一键登录流程")
         if self.popup_login_page.is_popup_displayed():
             # 点击手机号登录
             self.popup_login_page.click_login_tel()
 
             # 点确认一键登录
             self.popup_login_page.click_confirm_popup_agree()
+            self.logger.info("已点击确认一键登录")
             return True
         else:
-            print("登录弹窗未显示，无法进行一键登录")
+            self.logger.error("登录弹窗未显示，无法进行手机号登录")
+            return False
+
+    def login_with_phone_close(self):
+        """关闭手机登录弹窗"""
+        self.logger.info("开始执行手机号登录关闭流程")
+        if self.popup_login_page.is_popup_displayed():
+            self.popup_login_page.close_popup()
+            assert self.popup_login_page.is_popup_closed(), "弹窗未关闭"
+            self.logger.info("已关闭手机号登录弹窗")
+            return True
+        else:
+            self.logger.error("登录弹窗未显示，无法进行手机号登录")
+            return False
+
+    def login_with_phone_reject(self):
+        """手机号登录拒绝流程"""
+        self.logger.info("开始执行手机号拒绝登录流程")
+        if self.popup_login_page.is_popup_displayed():
+            # 点击手机号登录
+            self.popup_login_page.click_login_tel()
+
+            if self.popup_login_page.is_popup_tel_displayed():
+                self.popup_login_page.click_login()
+
+                if self.popup_login_page.is_confirm_popup_displayed():
+                    self.popup_login_page.click_confirm_popup_reject()
+                    assert self.popup_login_page.is_confirm_popup_displayed(), "弹窗未关闭"
+                    self.popup_login_page.assert_toast_visible("已拒绝登录")
+                    return True
+                else:
+                    self.logger.error("确认弹窗未显示")
+                    return False
+            else:
+                self.logger.error("手机号登录弹窗未显示")
+                return False
+        else:
+            self.logger.error("登录弹窗未显示，无法进行手机号登录拒绝操作")
             return False
 
 
